@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 class MyHomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(),
     body: SafeArea(child: child),
   );
 }
