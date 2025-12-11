@@ -18,8 +18,7 @@ class SplashPageState extends State<SplashPage> {
   /// navigate to next screen
   _moveToNextScreen() async {
     await Future.delayed(const Duration(seconds: 3));
-    Navigator.pushReplacement(
-      context,
+    Navigator.pushReplacement(context,
       MaterialPageRoute(builder: (_) => HomePage()),
     );
   }
