@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import '../widgets/location_and_notif_section.dart';
+import '../widgets/weather_icon.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,6 +13,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   double get width => MediaQuery.of(context).size.width;
+
   double get height => MediaQuery.of(context).size.height;
 
   @override
@@ -27,6 +30,9 @@ class HomePageState extends State<HomePage> {
               children: [
                 /// Location and Notification Section
                 LocationAndNotifSection(width: width, height: height),
+                SizedBox(height: 50),
+                /// Weather Icon
+                WeatherIcon(height: height, width: width),
               ],
             ),
           ),
@@ -35,3 +41,4 @@ class HomePageState extends State<HomePage> {
     );
   }
 }
+
