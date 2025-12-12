@@ -15,7 +15,6 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   double get width => MediaQuery.of(context).size.width;
-
   double get height => MediaQuery.of(context).size.height;
 
   @override
@@ -32,15 +31,15 @@ class HomePageState extends State<HomePage> {
               children: [
                 /// Location and Notification Section
                 LocationAndNotifSection(width: width, height: height),
-                SizedBox(height: 50),
+                SizedBox(height: height * 0.0625),
 
                 /// Weather Icon
                 WeatherIcon(height: height, width: width),
-                SizedBox(height: 20),
+                SizedBox(height: height * 0.025),
 
                 /// Current Temperature Section
                 CurrentTemperatureSection(),
-                SizedBox(height: 30),
+                SizedBox(height: height * 0.05),
 
                 /// Current Weather Activity Section
                 CurrentWeatherActivitySection(width: width, height: height),
