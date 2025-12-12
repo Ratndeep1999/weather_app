@@ -6,11 +6,13 @@ class BackgroundDecoratedBoxWidget extends StatelessWidget {
     required this.customWidget,
     required this.horizontalPadding,
     required this.verticalPadding,
+    required this.backgroundColor
   });
 
   final Widget customWidget;
   final double horizontalPadding;
   final double verticalPadding;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class BackgroundDecoratedBoxWidget extends StatelessWidget {
       width: double.infinity,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: Color(0xFF0c3a8a),
+          color: backgroundColor,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Padding(
