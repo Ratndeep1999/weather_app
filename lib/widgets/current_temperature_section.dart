@@ -25,10 +25,10 @@ class CurrentTemperatureSection extends StatelessWidget {
             ),
           ),
           TextSpan(
-            text: "Max.: 31° Min.: 25°",
+            text: "Max.: 31°   Min.: 25°",
             style: TextStyle(
               color: Colors.white,
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.w400,
             ),
           ),
