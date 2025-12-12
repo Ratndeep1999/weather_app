@@ -17,7 +17,7 @@ class WeatherIcon extends StatelessWidget {
       "assets/icons/sun_cloud.svg",
       height: height * 0.225,
       width: width * 0.45,
-      semanticsLabel: "Cloude",
+      semanticsLabel: "Sunny",
     );
   }
 }
