@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
+import '../widgets/current_temperature_section.dart';
+import '../widgets/current_weather_activity_section.dart';
 import '../widgets/location_and_notif_section.dart';
 import '../widgets/weather_icon.dart';
 
@@ -31,8 +33,17 @@ class HomePageState extends State<HomePage> {
                 /// Location and Notification Section
                 LocationAndNotifSection(width: width, height: height),
                 SizedBox(height: 50),
+
                 /// Weather Icon
                 WeatherIcon(height: height, width: width),
+                SizedBox(height: 20),
+
+                /// Current Temperature Section
+                CurrentTemperatureSection(),
+                SizedBox(height: 30),
+
+                /// Current Weather Activity Section
+                CurrentWeatherActivitySection(width: width, height: height),
               ],
             ),
           ),
@@ -41,4 +52,3 @@ class HomePageState extends State<HomePage> {
     );
   }
 }
-
