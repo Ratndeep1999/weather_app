@@ -15,8 +15,8 @@ class CurrentWeatherActivitySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackgroundDecoratedBoxWidget(
-      horizontalPadding: width * 0.0875,
-      verticalPadding: height * 0.0125,
+      horizontalPadding: width * 0.05, //20
+      verticalPadding: height * 0.0125, //10
       customWidget: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
