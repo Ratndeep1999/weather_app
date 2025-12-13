@@ -16,7 +16,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackgroundDecoratedBoxWidget(
-      horizontalPadding: width * 0.05, //20
+      horizontalPadding: width * 0.04, //16
       verticalPadding: height * 0.02, //16
       customWidget: Column(
         children: [
