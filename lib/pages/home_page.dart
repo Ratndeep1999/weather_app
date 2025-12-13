@@ -25,8 +25,8 @@ class HomePageState extends State<HomePage> {
       body: AppGradientBackground(
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: 20, //32
-            vertical: 20, //32
+            horizontal: width * 0.05, //20
+            vertical: height * 0.025, //20
           ),
           child: SingleChildScrollView(
             child: Column(
