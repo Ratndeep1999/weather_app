@@ -7,8 +7,8 @@ class MinMaxTemperatureWidget extends StatelessWidget {
     required this.minTemperature,
   });
 
-  final int maxTemperature;
-  final int minTemperature;
+  final String maxTemperature;
+  final String minTemperature;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class MinMaxTemperatureWidget extends StatelessWidget {
         children: [
           /// Max Temperature
           TextSpan(
-            text: "$maxTemperature",
+            text: maxTemperature,
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,
@@ -43,7 +43,7 @@ class MinMaxTemperatureWidget extends StatelessWidget {
 
           /// Min Temperature
           TextSpan(
-            text: "$minTemperature",
+            text: minTemperature,
             style: TextStyle(
               color: Color(0xFF8499c2),
               fontSize: 16,
