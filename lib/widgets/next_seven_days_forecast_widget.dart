@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'min_max_temperature_widget.dart';
 
 class NextSevenDaysForecastWidget extends StatelessWidget {
   const NextSevenDaysForecastWidget({
@@ -35,57 +35,7 @@ class NextSevenDaysForecastWidget extends StatelessWidget {
         ),
 
         /// Min And Max Temperature
-        Text.rich(
-          TextSpan(
-            children: [
-              /// Max Temperature
-              TextSpan(
-                text: "13",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              WidgetSpan(
-                child: Transform.translate(
-                  offset: Offset(0, -4),
-                  child: Text(
-                    "°C\t\t\t",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-
-              /// Min Temperature
-              TextSpan(
-                text: "10",
-                style: TextStyle(
-                  color: Color(0xFF8499c2),
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              WidgetSpan(
-                child: Transform.translate(
-                  offset: Offset(0, -4),
-                  child: Text(
-                    "°C",
-                    style: TextStyle(
-                      color: Color(0xFF8499c2),
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        MinMaxTemperatureWidget(),
       ],
     );
   }
