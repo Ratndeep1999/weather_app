@@ -7,7 +7,7 @@ class BackgroundDecoratedBoxWidget extends StatelessWidget {
     required this.horizontalPadding,
     required this.verticalPadding,
     this.backgroundColor,
-    required this.isBorder,
+    this.isBorder = false,
     this.boxWidth,
   });
 
