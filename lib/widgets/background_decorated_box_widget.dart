@@ -8,6 +8,7 @@ class BackgroundDecoratedBoxWidget extends StatelessWidget {
     required this.verticalPadding,
     this.backgroundColor,
     required this.isBorder,
+    this.boxWidth,
   });
 
   final Widget customWidget;
@@ -15,11 +16,12 @@ class BackgroundDecoratedBoxWidget extends StatelessWidget {
   final double verticalPadding;
   final Color? backgroundColor;
   final bool isBorder;
+  final double? boxWidth;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width: boxWidth ?? double.infinity,
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: backgroundColor ?? Color(0xFF0c3a8a),
