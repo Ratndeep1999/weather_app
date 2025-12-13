@@ -6,13 +6,15 @@ class BackgroundDecoratedBoxWidget extends StatelessWidget {
     required this.customWidget,
     required this.horizontalPadding,
     required this.verticalPadding,
-    this.backgroundColor
+    this.backgroundColor,
+    this.isBorder,
   });
 
   final Widget customWidget;
   final double horizontalPadding;
   final double verticalPadding;
   final Color? backgroundColor;
+  final BoxBorder? isBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +24,14 @@ class BackgroundDecoratedBoxWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: backgroundColor ?? Color(0xFF0c3a8a),
           borderRadius: BorderRadius.circular(20),
+          border: isBorder ?? Border.all(color: Color(0xFF185dc4), width: 1.5),
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: horizontalPadding,
             vertical: verticalPadding,
           ),
+
           /// Custom Widget
           child: customWidget,
         ),
