@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/widgets/background_decorated_box_widget.dart';
 import 'package:weather_app/widgets/hourly_weather_report_widget.dart';
-import 'package:weather_app/widgets/two_items_widget.dart';
+import 'package:weather_app/widgets/today_hourly_forecast_first_row.dart';
 
 class TodayHourlyForecastSection extends StatelessWidget {
   const TodayHourlyForecastSection({
@@ -18,36 +18,53 @@ class TodayHourlyForecastSection extends StatelessWidget {
     return BackgroundDecoratedBoxWidget(
       horizontalPadding: width * 0.05, //20
       verticalPadding: height * 0.02, //16
-      isBorder: false,
       customWidget: Column(
         children: [
-          /// first row
-          TwoItemsWidget(
-            firstWidget: const Text(
-              "Today",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            secondWidget: const Text(
-              "Mar, 9",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          ),
-          SizedBox(height: height * 0.025),
+          /// First Row
+          TodayHourlyForecastFirstRow(),
+          SizedBox(height: height * 0.02), //16
 
           /// Hourly Weather Report
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              /// first hour report
+              /// First Hour Report
               HourlyWeatherReportWidget(
                 width: width,
                 height: height,
                 temperature: 29,
-                icon: "assets/icons/clouds.svg",
+                icon: "assets/icons/sunny_cloud.svg",
                 hours: 15,
+                isSelected: false,
+              ),
+
+              /// Second Hour Report
+              HourlyWeatherReportWidget(
+                width: width,
+                height: height,
+                temperature: 26,
+                icon: "assets/icons/rain_cloud.svg",
+                hours: 16,
+                isSelected: false,
+              ),
+
+              /// Third Hour Report
+              HourlyWeatherReportWidget(
+                width: width,
+                height: height,
+                temperature: 24,
+                icon: "assets/icons/thunder.svg",
+                hours: 17,
+                isSelected: true,
+              ),
+
+              /// Fourth Hour Report
+              HourlyWeatherReportWidget(
+                width: width,
+                height: height,
+                temperature: 23,
+                icon: "assets/icons/moon_cloud.svg",
+                hours: 18,
                 isSelected: false,
               ),
             ],
