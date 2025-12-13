@@ -23,7 +23,6 @@ class TodayHourlyForecastSection extends StatelessWidget {
           /// First Row
           TodayHourlyForecastFirstRow(),
           SizedBox(height: height * 0.02), //16
-
           /// Hourly Weather Report
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
