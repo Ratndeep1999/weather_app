@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'background_decorated_box_widget.dart';
+
+class HourlyWeatherReportWidget extends StatelessWidget {
+  const HourlyWeatherReportWidget({
+    super.key,
+    required this.width,
+    required this.height,
+    required this.temperature,
+    required this.icon,
+    required this.hours,
+    this.isSelected = false,
+  });
+
+  final double width;
+  final double height;
+  final int temperature;
+  final String icon;
+  final int hours;
+  final bool? isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    /// Hourly Report Widget
+    return BackgroundDecoratedBoxWidget(
+      boxWidth: width * 0.18, //70
+      horizontalPadding: width * 0.0,
+      verticalPadding: height * 0.02, //16
+      backgroundColor: isSelected! ? Color(0xFF12428d) : null,
+      isBorder: isSelected!,
+      customWidget: Column(
+        children: [
+          /// Temperature
+          Text(
+            "$temperature°C",
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
+          SizedBox(height: height * 0.02), // 16
+          /// Weather Report Icon
+          SvgPicture.asset(
+            icon,
+            height: height * 0.05, // 40
+            width: width * 0.2, // 40
+          ),
+          SizedBox(height: height * 0.02), // 16
+          /// Hours
+          Text(
+            "$hours.00",
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
+        ],
+      ),
+    );
+  }
+}
