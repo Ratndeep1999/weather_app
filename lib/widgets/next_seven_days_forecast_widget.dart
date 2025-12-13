@@ -7,10 +7,18 @@ class NextSevenDaysForecastWidget extends StatelessWidget {
     super.key,
     required this.height,
     required this.width,
+    required this.forecastDay,
+    required this.weatherIcon,
+    required this.minTemperature,
+    required this.maxTemperature,
   });
 
   final double height;
   final double width;
+  final String forecastDay;
+  final String weatherIcon;
+  final String minTemperature;
+  final String maxTemperature;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +27,7 @@ class NextSevenDaysForecastWidget extends StatelessWidget {
       children: [
         /// Day
         Text(
-          "Monday",
+          forecastDay,
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
@@ -29,13 +37,16 @@ class NextSevenDaysForecastWidget extends StatelessWidget {
 
         /// Weather Report
         SvgPicture.asset(
-          "assets/icons/sun_cloud.svg",
+          weatherIcon,
           height: height * 0.0375, //30
           width: width * 0.075, //30
         ),
 
         /// Min And Max Temperature
-        MinMaxTemperatureWidget(),
+        MinMaxTemperatureWidget(
+          maxTemperature: maxTemperature,
+          minTemperature: minTemperature,
+        ),
       ],
     );
   }
