@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MinMaxTemperatureWidget extends StatelessWidget {
-  const MinMaxTemperatureWidget({
-    super.key,
-  });
+  const MinMaxTemperatureWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class MinMaxTemperatureWidget extends StatelessWidget {
             child: Transform.translate(
               offset: Offset(0, -4),
               child: Text(
-                "°C\t\t\t",
+                "°C",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 12,
@@ -32,6 +30,9 @@ class MinMaxTemperatureWidget extends StatelessWidget {
               ),
             ),
           ),
+
+          // space
+          const TextSpan(text: "\t\t"),
 
           /// Min Temperature
           TextSpan(
