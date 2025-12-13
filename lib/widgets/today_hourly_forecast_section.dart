@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/widgets/background_decorated_box_widget.dart';
 import 'package:weather_app/widgets/hourly_weather_report_widget.dart';
-import 'package:weather_app/widgets/today_hourly_forecast_first_row.dart';
+import 'package:weather_app/widgets/today_hourly_forecast_first_row_widget.dart';
 
 class TodayHourlyForecastSection extends StatelessWidget {
   const TodayHourlyForecastSection({
@@ -21,7 +21,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
       customWidget: Column(
         children: [
           /// First Row
-          TodayHourlyForecastFirstRow(),
+          TodayHourlyForecastFirstRowWidget(),
           SizedBox(height: height * 0.02), //16
           /// Hourly Weather Report
           Row(
