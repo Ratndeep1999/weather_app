@@ -17,6 +17,7 @@ class CurrentWeatherActivitySection extends StatelessWidget {
     return BackgroundDecoratedBoxWidget(
       horizontalPadding: width * 0.05, //20
       verticalPadding: height * 0.0125, //10
+      isBorder: false,
       customWidget: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
