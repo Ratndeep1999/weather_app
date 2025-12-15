@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class BackgroundDecoratedBoxWidget extends StatelessWidget {
   const BackgroundDecoratedBoxWidget({
     super.key,
+    required this.isNight,
     required this.customWidget,
     required this.horizontalPadding,
     required this.verticalPadding,
@@ -11,6 +12,7 @@ class BackgroundDecoratedBoxWidget extends StatelessWidget {
     this.boxWidth,
   });
 
+  final bool isNight;
   final Widget customWidget;
   final double horizontalPadding;
   final double verticalPadding;
@@ -24,9 +26,13 @@ class BackgroundDecoratedBoxWidget extends StatelessWidget {
       width: boxWidth ?? double.infinity,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: backgroundColor ?? Color(0xFF0c3a8a),
+          color:
+              backgroundColor ??
+              (isNight ? Color(0xFF0c3a8a) : Color(0xFF278dc4)), // 278dc4
           borderRadius: BorderRadius.circular(20),
-          border: isBorder ? Border.all(color: Color(0xFF185dc4), width: 1.5) : null,
+          border: isBorder
+              ? Border.all(color: Color(0xFF185dc4), width: 1.5)
+              : null,
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
