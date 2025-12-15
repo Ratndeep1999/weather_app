@@ -56,7 +56,6 @@ class NextForecastSection extends StatelessWidget {
           /// First Row
           NextForecastFirstRowWidget(),
           SizedBox(height: 20),
-
           /// Next Seven Day's Forecast
           NextSevenDaysForecastWidget(
             isNight: isNight,
