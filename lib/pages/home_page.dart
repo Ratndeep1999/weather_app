@@ -64,7 +64,7 @@ class HomePageState extends State<HomePage> {
                 TodayHourlyForecastSection(isNight: isNight, width: width, height: height, today: today),
                 SizedBox(height: height * 0.025), //20
                 /// Next Forecast  Section
-                NextForecastSection(isNight: isNight, width: width, height: height),
+                NextForecastSection(isNight: isNight, width: width, height: height,today: today),
               ],
             ),
           ),
