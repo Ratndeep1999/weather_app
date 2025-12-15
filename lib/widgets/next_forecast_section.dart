@@ -6,16 +6,19 @@ import 'next_seven_days_forecast_widget.dart';
 class NextForecastSection extends StatelessWidget {
   const NextForecastSection({
     super.key,
+    required this.isNight,
     required this.width,
     required this.height,
   });
 
+  final bool isNight;
   final double width;
   final double height;
 
   @override
   Widget build(BuildContext context) {
     return BackgroundDecoratedBoxWidget(
+      isNight: isNight,
       horizontalPadding: width * 0.04, //16
       verticalPadding: height * 0.02, //16
       customWidget: Column(
