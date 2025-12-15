@@ -10,7 +10,7 @@ class HourlyWeatherReportWidget extends StatelessWidget {
     required this.temperature,
     required this.icon,
     required this.hours,
-    this.isSelected = false,
+    this.isCurrentHours = false,
   });
 
   final double width;
@@ -18,7 +18,7 @@ class HourlyWeatherReportWidget extends StatelessWidget {
   final String temperature;
   final String icon;
   final String hours;
-  final bool? isSelected;
+  final bool? isCurrentHours;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,8 @@ class HourlyWeatherReportWidget extends StatelessWidget {
       boxWidth: width * 0.18, //70
       horizontalPadding: width * 0.0,
       verticalPadding: height * 0.02, //16
-      backgroundColor: isSelected! ? Color(0xFF12428d) : null,
-      isBorder: isSelected!,
+      backgroundColor: isCurrentHours! ? Color(0xFF12428d) : null,
+      isBorder: isCurrentHours!,
       customWidget: Column(
         children: [
           /// Temperature
