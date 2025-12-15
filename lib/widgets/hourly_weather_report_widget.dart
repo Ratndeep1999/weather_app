@@ -30,7 +30,9 @@ class HourlyWeatherReportWidget extends StatelessWidget {
       boxWidth: width * 0.18, //70
       horizontalPadding: width * 0.0,
       verticalPadding: height * 0.02, //16
-      backgroundColor: isCurrentHours! ? Color(0xFF12428d) : null,
+      backgroundColor: isCurrentHours!
+          ? (isNight ? Color(0xFF12428d) : Color(0xFF2d92cc))
+          : null,
       isBorder: isCurrentHours!,
       customWidget: Column(
         children: [
