@@ -5,10 +5,12 @@ import 'package:weather_app/widgets/weather_activity_widget.dart';
 class CurrentWeatherActivitySection extends StatelessWidget {
   const CurrentWeatherActivitySection({
     super.key,
+    required this.isNight,
     required this.width,
     required this.height,
   });
 
+  final bool isNight;
   final double width;
   final double height;
 
@@ -21,16 +23,22 @@ class CurrentWeatherActivitySection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           /// rain
-          WeatherActivityWidget(icon: "assets/icons/rain.svg", label: "6%"),
+          WeatherActivityWidget(
+            icon: "assets/icons/rain.svg",
+            label: isNight ? "6%" : "18%",
+          ),
 
           /// humidity
           WeatherActivityWidget(
             icon: "assets/icons/humidity.svg",
-            label: "90%",
+            label: isNight ? "90%" : "67%",
           ),
 
           /// wind
-          WeatherActivityWidget(icon: "assets/icons/wind.svg", label: "19km/h"),
+          WeatherActivityWidget(
+            icon: "assets/icons/wind.svg",
+            label: isNight ? "19km/h" : "25km/h",
+          ),
         ],
       ),
     );
