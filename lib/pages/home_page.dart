@@ -40,12 +40,12 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       body: AppGradientBackground(
         isNight: isNight,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: width * 0.05, //20
-            vertical: height * 0.025, //20
-          ),
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: width * 0.05, //20
+              vertical: height * 0.025, //20
+            ),
             child: Column(
               children: [
                 /// Location and Notification Section
