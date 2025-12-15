@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AppGradientBackground extends StatelessWidget {
-  const AppGradientBackground({super.key, required this.child});
+  const AppGradientBackground({
+    super.key,
+    required this.child,
+    required this.isNight,
+  });
 
+  final bool isNight;
   final Widget child;
 
   @override
@@ -11,9 +16,11 @@ class AppGradientBackground extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       child: DecoratedBox(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF08244F), Color(0xFF134CB5), Color(0xFF0B42AB)],
+            colors: isNight
+                ? const [Color(0xFF08244F), Color(0xFF134CB5), Color(0xFF0B42AB)]
+                : const [Color(0xFF29B2DD), Color(0xFF33AADD), Color(0xFF2DC8EA)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
