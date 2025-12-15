@@ -25,25 +25,26 @@ class NextSevenDaysForecastWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         /// Day
-        Text(
-          forecastDay,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
+        Expanded(
+          child: Text(
+            forecastDay,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
 
-        /// Weather Report
+        /// Weather Report Icon
         SvgPicture.asset(
           weatherIcon,
           height: height * 0.0375, //30
           width: width * 0.075, //30
         ),
-
+        SizedBox(width: width * 0.1875), //75
         /// Min And Max Temperature
         MinMaxTemperatureWidget(
           isNight: isNight,
