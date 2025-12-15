@@ -31,7 +31,10 @@ class BackgroundDecoratedBoxWidget extends StatelessWidget {
               (isNight ? Color(0xFF0c3a8a) : Color(0xFF278dc4)),
           borderRadius: BorderRadius.circular(20),
           border: isBorder
-              ? Border.all(color: Color(0xFF185dc4), width: 1.5)
+              ? Border.all(
+                  color: isNight ? Color(0xFF185dc4) : Color(0xFF77bcfc),
+                  width: 1.5,
+                )
               : null,
         ),
         child: Padding(
