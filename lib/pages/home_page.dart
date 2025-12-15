@@ -31,7 +31,7 @@ class HomePageState extends State<HomePage> {
     today = DateTime.now();
     final currentHours = today.hour;
     // print("Current Hours : $currentHours");
-    isNight = currentHours > 18;
+    isNight = currentHours > 18 || currentHours < 6;
     // print("Is Night = $isNight");
   }
 
@@ -58,8 +58,7 @@ class HomePageState extends State<HomePage> {
                 CurrentTemperatureSection(isNight: isNight),
                 SizedBox(height: height * 0.05), //40
                 /// Current Weather Activity Section
-                CurrentWeatherActivitySection(isNight: isNight, width: width, height: height,
-                ),
+                CurrentWeatherActivitySection(isNight: isNight, width: width, height: height),
                 SizedBox(height: height * 0.025), //20
                 /// Today's Hourly Forecast Section
                 TodayHourlyForecastSection(isNight: isNight, width: width, height: height, today: today),
