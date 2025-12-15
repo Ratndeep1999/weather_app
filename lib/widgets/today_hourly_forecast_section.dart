@@ -9,11 +9,19 @@ class TodayHourlyForecastSection extends StatelessWidget {
     required this.isNight,
     required this.width,
     required this.height,
+    required this.today,
   });
 
   final bool isNight;
   final double width;
   final double height;
+  final DateTime today;
+
+  /// Method to get Formated hours
+  _getHours(int hours) {
+    final timeData = today.add(Duration(hours: hours));
+    return timeData.hour.toString().padLeft(2, '0');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +32,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
       customWidget: Column(
         children: [
           /// First Row
-          TodayHourlyForecastFirstRowWidget(),
+          TodayHourlyForecastFirstRowWidget(today: today),
           SizedBox(height: height * 0.02), //16
           /// Hourly Weather Report
           Row(
@@ -37,7 +45,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 height: height,
                 temperature: isNight ? "29" : "31",
                 icon: "assets/icons/sunny_cloud.svg",
-                hours: "15",
+                hours: _getHours(-1),
               ),
 
               /// Second Hour Report
@@ -47,7 +55,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 height: height,
                 temperature: isNight ? "26" : "30",
                 icon: "assets/icons/rain_cloud.svg",
-                hours: "16",
+                hours: _getHours(0),
                 isCurrentHours: true,
               ),
 
@@ -58,7 +66,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 height: height,
                 temperature: isNight ? "24" : "28",
                 icon: "assets/icons/thunder.svg",
-                hours: "17",
+                hours: _getHours(1),
               ),
 
               /// Fourth Hour Report
@@ -68,7 +76,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 height: height,
                 temperature: isNight ? "23" : "28",
                 icon: "assets/icons/moon_cloud.svg",
-                hours: "18",
+                hours: _getHours(2),
               ),
             ],
           ),
