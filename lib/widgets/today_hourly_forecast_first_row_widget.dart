@@ -10,7 +10,7 @@ class TodayHourlyForecastFirstRowWidget extends StatelessWidget {
   _getTodayFormatedDate() {
     final month = _getMonth(today.month);
     final date = today.day;
-    final currentFormatedDate = "$month,\t$date";
+    final currentFormatedDate = "$month,\t${date.toString().padLeft(2, '0')}";
     return currentFormatedDate;
   }
 
@@ -58,7 +58,7 @@ class TodayHourlyForecastFirstRowWidget extends StatelessWidget {
         ),
       ),
       secondWidget: Text(
-        _getTodayFormatedDate(), //"Mar, 9",
+        _getTodayFormatedDate(),
         style: const TextStyle(color: Colors.white, fontSize: 20),
       ),
     );
