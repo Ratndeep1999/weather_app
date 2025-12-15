@@ -7,8 +7,8 @@ class BackgroundDecoratedBoxWidget extends StatelessWidget {
     required this.customWidget,
     required this.horizontalPadding,
     required this.verticalPadding,
-    this.backgroundColor,
     this.isBorder = false,
+    this.backgroundColor,
     this.boxWidth,
   });
 
@@ -28,7 +28,7 @@ class BackgroundDecoratedBoxWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color:
               backgroundColor ??
-              (isNight ? Color(0xFF0c3a8a) : Color(0xFF278dc4)), // 278dc4
+              (isNight ? Color(0xFF0c3a8a) : Color(0xFF278dc4)),
           borderRadius: BorderRadius.circular(20),
           border: isBorder
               ? Border.all(color: Color(0xFF185dc4), width: 1.5)
