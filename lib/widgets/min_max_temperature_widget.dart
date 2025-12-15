@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class MinMaxTemperatureWidget extends StatelessWidget {
   const MinMaxTemperatureWidget({
     super.key,
+    required this.isNight,
     required this.maxTemperature,
     required this.minTemperature,
   });
 
+  final bool isNight;
   final String maxTemperature;
   final String minTemperature;
 
@@ -45,7 +47,7 @@ class MinMaxTemperatureWidget extends StatelessWidget {
           TextSpan(
             text: minTemperature,
             style: TextStyle(
-              color: Color(0xFF8499c2),
+              color: isNight ? Color(0xFF8499c2) : Color(0xFF91cce3),
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
@@ -56,7 +58,7 @@ class MinMaxTemperatureWidget extends StatelessWidget {
               child: Text(
                 "°C",
                 style: TextStyle(
-                  color: Color(0xFF8499c2),
+                  color: isNight ? Color(0xFF8499c2) : Color(0xFF91cce3),
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
                 ),
