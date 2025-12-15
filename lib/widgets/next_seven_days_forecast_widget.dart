@@ -5,6 +5,7 @@ import 'min_max_temperature_widget.dart';
 class NextSevenDaysForecastWidget extends StatelessWidget {
   const NextSevenDaysForecastWidget({
     super.key,
+    required this.isNight,
     required this.height,
     required this.width,
     required this.forecastDay,
@@ -13,6 +14,7 @@ class NextSevenDaysForecastWidget extends StatelessWidget {
     required this.maxTemperature,
   });
 
+  final bool isNight;
   final double height;
   final double width;
   final String forecastDay;
@@ -44,6 +46,7 @@ class NextSevenDaysForecastWidget extends StatelessWidget {
 
         /// Min And Max Temperature
         MinMaxTemperatureWidget(
+          isNight: isNight,
           maxTemperature: maxTemperature,
           minTemperature: minTemperature,
         ),
