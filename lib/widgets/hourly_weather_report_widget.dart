@@ -15,9 +15,9 @@ class HourlyWeatherReportWidget extends StatelessWidget {
 
   final double width;
   final double height;
-  final int temperature;
+  final String temperature;
   final String icon;
-  final int hours;
+  final String hours;
   final bool? isSelected;
 
   @override
