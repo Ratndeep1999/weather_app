@@ -57,21 +57,15 @@ class HomePageState extends State<HomePage> {
                 CurrentTemperatureSection(isNight: isNight),
                 SizedBox(height: height * 0.05), //40
                 /// Current Weather Activity Section
-                CurrentWeatherActivitySection(
-                  isNight: isNight,
-                  width: width,
-                  height: height,
+                CurrentWeatherActivitySection(isNight: isNight, width: width, height: height,
                 ),
                 SizedBox(height: height * 0.025), //20
                 /// Today's Hourly Forecast Section
-                TodayHourlyForecastSection(
-                  isNight: isNight,
-                  width: width,
-                  height: height,
+                TodayHourlyForecastSection(isNight: isNight, width: width, height: height,
                 ),
                 SizedBox(height: height * 0.025), //20
                 /// Next Forecast  Section
-                NextForecastSection(width: width, height: height),
+                NextForecastSection(isNight: isNight, width: width, height: height),
               ],
             ),
           ),
