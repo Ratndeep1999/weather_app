@@ -15,9 +15,24 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  late final bool isNight;
   double get width => MediaQuery.of(context).size.width;
-
   double get height => MediaQuery.of(context).size.height;
+
+  @override
+  void initState() {
+    _getDayOrNight();
+    super.initState();
+  }
+
+  /// Method to get Night or Not
+  _getDayOrNight() {
+    final today = DateTime.now();
+    final currentHours = today.hour;
+    // print("Current Hours : $currentHours");
+    isNight = currentHours > 18;
+    // print("Is Night = $isNight");
+  }
 
   @override
   Widget build(_) {
@@ -38,15 +53,22 @@ class HomePageState extends State<HomePage> {
                 WeatherIcon(height: height, width: width),
                 SizedBox(height: height * 0.025), // 20
                 /// Current Temperature Section
-                CurrentTemperatureSection(),
+                CurrentTemperatureSection(isNight: isNight),
                 SizedBox(height: height * 0.05), //40
                 /// Current Weather Activity Section
-                CurrentWeatherActivitySection(width: width, height: height),
+                CurrentWeatherActivitySection(
+                  isNight: isNight,
+                  width: width,
+                  height: height,
+                ),
                 SizedBox(height: height * 0.025), //20
                 /// Today's Hourly Forecast Section
-                TodayHourlyForecastSection(width: width, height: height),
+                TodayHourlyForecastSection(
+                  isNight: isNight,
+                  width: width,
+                  height: height,
+                ),
                 SizedBox(height: height * 0.025), //20
-
                 /// Next Forecast  Section
                 NextForecastSection(width: width, height: height),
               ],
@@ -57,4 +79,3 @@ class HomePageState extends State<HomePage> {
     );
   }
 }
-
