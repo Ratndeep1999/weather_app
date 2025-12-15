@@ -16,6 +16,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   late final bool isNight;
+  late final DateTime today;
   double get width => MediaQuery.of(context).size.width;
   double get height => MediaQuery.of(context).size.height;
 
@@ -27,7 +28,7 @@ class HomePageState extends State<HomePage> {
 
   /// Method to get Night or Not
   _getDayOrNight() {
-    final today = DateTime.now();
+    today = DateTime.now();
     final currentHours = today.hour;
     // print("Current Hours : $currentHours");
     isNight = currentHours > 18;
@@ -61,8 +62,7 @@ class HomePageState extends State<HomePage> {
                 ),
                 SizedBox(height: height * 0.025), //20
                 /// Today's Hourly Forecast Section
-                TodayHourlyForecastSection(isNight: isNight, width: width, height: height,
-                ),
+                TodayHourlyForecastSection(isNight: isNight, width: width, height: height, today: today),
                 SizedBox(height: height * 0.025), //20
                 /// Next Forecast  Section
                 NextForecastSection(isNight: isNight, width: width, height: height),
