@@ -18,6 +18,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackgroundDecoratedBoxWidget(
+      isNight: isNight,
       horizontalPadding: width * 0.04, //16
       verticalPadding: height * 0.02, //16
       customWidget: Column(
@@ -31,25 +32,28 @@ class TodayHourlyForecastSection extends StatelessWidget {
             children: [
               /// First Hour Report
               HourlyWeatherReportWidget(
+                isNight: isNight,
                 width: width,
                 height: height,
                 temperature: isNight ? "29" : "31",
                 icon: "assets/icons/sunny_cloud.svg",
                 hours: "15",
-                isCurrentHours: false,
               ),
 
               /// Second Hour Report
               HourlyWeatherReportWidget(
+                isNight: isNight,
                 width: width,
                 height: height,
                 temperature: isNight ? "26" : "30",
                 icon: "assets/icons/rain_cloud.svg",
                 hours: "16",
+                isCurrentHours: true,
               ),
 
               /// Third Hour Report
               HourlyWeatherReportWidget(
+                isNight: isNight,
                 width: width,
                 height: height,
                 temperature: isNight ? "24" : "28",
@@ -59,6 +63,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
 
               /// Fourth Hour Report
               HourlyWeatherReportWidget(
+                isNight: isNight,
                 width: width,
                 height: height,
                 temperature: isNight ? "23" : "28",
