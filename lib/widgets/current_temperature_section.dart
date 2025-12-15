@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CurrentTemperatureSection extends StatelessWidget {
-  const CurrentTemperatureSection({super.key});
+  const CurrentTemperatureSection({super.key, required this.isNight});
+
+  final bool isNight;
 
   @override
   Widget build(BuildContext context) {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-        text: " 28°\n",
+        text: isNight ? " 28°\n" : " 30°\n",
         style: TextStyle(
           color: Colors.white,
           fontSize: 80,
@@ -25,7 +27,7 @@ class CurrentTemperatureSection extends StatelessWidget {
             ),
           ),
           TextSpan(
-            text: "Max.: 31°   Min.: 25°",
+            text: isNight ? "Max.: 31°   Min.: 25°" : "Max.: 34°   Min.: 28°",
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
