@@ -5,6 +5,7 @@ import 'background_decorated_box_widget.dart';
 class HourlyWeatherReportWidget extends StatelessWidget {
   const HourlyWeatherReportWidget({
     super.key,
+    required this.isNight,
     required this.width,
     required this.height,
     required this.temperature,
@@ -13,6 +14,7 @@ class HourlyWeatherReportWidget extends StatelessWidget {
     this.isCurrentHours = false,
   });
 
+  final bool isNight;
   final double width;
   final double height;
   final String temperature;
@@ -24,6 +26,7 @@ class HourlyWeatherReportWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     /// Hourly Report Widget
     return BackgroundDecoratedBoxWidget(
+      isNight: isNight,
       boxWidth: width * 0.18, //70
       horizontalPadding: width * 0.0,
       verticalPadding: height * 0.02, //16
