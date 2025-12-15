@@ -36,7 +36,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 temperature: isNight ? "29" : "31",
                 icon: "assets/icons/sunny_cloud.svg",
                 hours: "15",
-                isSelected: false,
+                isCurrentHours: false,
               ),
 
               /// Second Hour Report
@@ -46,7 +46,6 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 temperature: isNight ? "26" : "30",
                 icon: "assets/icons/rain_cloud.svg",
                 hours: "16",
-                isSelected: false,
               ),
 
               /// Third Hour Report
@@ -56,7 +55,6 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 temperature: isNight ? "24" : "28",
                 icon: "assets/icons/thunder.svg",
                 hours: "17",
-                isSelected: true,
               ),
 
               /// Fourth Hour Report
@@ -66,7 +64,6 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 temperature: isNight ? "23" : "28",
                 icon: "assets/icons/moon_cloud.svg",
                 hours: "18",
-                isSelected: false,
               ),
             ],
           ),
