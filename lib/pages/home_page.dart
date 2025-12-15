@@ -38,6 +38,7 @@ class HomePageState extends State<HomePage> {
   Widget build(_) {
     return Scaffold(
       body: AppGradientBackground(
+        isNight: isNight,
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: width * 0.05, //20
