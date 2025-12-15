@@ -6,10 +6,12 @@ import 'package:weather_app/widgets/today_hourly_forecast_first_row_widget.dart'
 class TodayHourlyForecastSection extends StatelessWidget {
   const TodayHourlyForecastSection({
     super.key,
+    required this.isNight,
     required this.width,
     required this.height,
   });
 
+  final bool isNight;
   final double width;
   final double height;
 
@@ -31,9 +33,9 @@ class TodayHourlyForecastSection extends StatelessWidget {
               HourlyWeatherReportWidget(
                 width: width,
                 height: height,
-                temperature: 29,
+                temperature: isNight ? "29" : "31",
                 icon: "assets/icons/sunny_cloud.svg",
-                hours: 15,
+                hours: "15",
                 isSelected: false,
               ),
 
@@ -41,9 +43,9 @@ class TodayHourlyForecastSection extends StatelessWidget {
               HourlyWeatherReportWidget(
                 width: width,
                 height: height,
-                temperature: 26,
+                temperature: isNight ? "26" : "30",
                 icon: "assets/icons/rain_cloud.svg",
-                hours: 16,
+                hours: "16",
                 isSelected: false,
               ),
 
@@ -51,9 +53,9 @@ class TodayHourlyForecastSection extends StatelessWidget {
               HourlyWeatherReportWidget(
                 width: width,
                 height: height,
-                temperature: 24,
+                temperature: isNight ? "24" : "28",
                 icon: "assets/icons/thunder.svg",
-                hours: 17,
+                hours: "17",
                 isSelected: true,
               ),
 
@@ -61,9 +63,9 @@ class TodayHourlyForecastSection extends StatelessWidget {
               HourlyWeatherReportWidget(
                 width: width,
                 height: height,
-                temperature: 23,
+                temperature: isNight ? "23" : "28",
                 icon: "assets/icons/moon_cloud.svg",
-                hours: 18,
+                hours: "18",
                 isSelected: false,
               ),
             ],
