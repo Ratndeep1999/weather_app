@@ -36,6 +36,7 @@ class TextStyles {
   // AlegreyaSansMedium style
   static TextStyle alegreyaSansMedium = TextStyle(
     fontWeight: FontWeight.w500,
+    fontSize: 20,
     color: Colors.white,
     fontFamily: 'AlegreyaSans',
   );
