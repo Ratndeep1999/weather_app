@@ -28,7 +28,7 @@ class TextStyles {
   // AlegreyaSansBold style
   static TextStyle alegreyaSansBold = TextStyle(
     fontWeight: FontWeight.w700,
-
+    fontSize: 20,
     color: Colors.white,
     fontFamily: 'AlegreyaSans',
   );
