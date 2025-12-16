@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../commons/text_styles.dart';
 
 class CurrentTemperatureSection extends StatelessWidget {
   const CurrentTemperatureSection({super.key, required this.isNight});
@@ -11,28 +12,13 @@ class CurrentTemperatureSection extends StatelessWidget {
       textAlign: TextAlign.center,
       text: TextSpan(
         text: isNight ? " 28°\n" : " 30°\n",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 80,
-          fontWeight: FontWeight.w500,
-        ),
+        style: TextStyles.sfProSemibold.copyWith(fontSize: 80.0),
         semanticsLabel: "Temperature",
         children: [
-          TextSpan(
-            text: "Precipitations\n",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
+          TextSpan(text: "Precipitations\n", style: TextStyles.sfProRegular),
           TextSpan(
             text: isNight ? "Max.: 31°   Min.: 25°" : "Max.: 34°   Min.: 28°",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.w400,
-            ),
+            style: TextStyles.sfProRegular,
           ),
         ],
       ),
