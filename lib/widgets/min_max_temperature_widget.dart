@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/commons/text_styles.dart';
 
 class MinMaxTemperatureWidget extends StatelessWidget {
   const MinMaxTemperatureWidget({
@@ -18,24 +19,13 @@ class MinMaxTemperatureWidget extends StatelessWidget {
       TextSpan(
         children: [
           /// Max Temperature
-          TextSpan(
-            text: maxTemperature,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          TextSpan(text: maxTemperature, style: TextStyles.alegreyaSansMedium),
           WidgetSpan(
             child: Transform.translate(
               offset: Offset(0, -4),
               child: Text(
                 "°C",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyles.alegreyaSansMedium.copyWith(fontSize: 12.0),
               ),
             ),
           ),
@@ -46,10 +36,8 @@ class MinMaxTemperatureWidget extends StatelessWidget {
           /// Min Temperature
           TextSpan(
             text: minTemperature,
-            style: TextStyle(
+            style: TextStyles.alegreyaSansMedium.copyWith(
               color: isNight ? Color(0xFF8499c2) : Color(0xFF91cce3),
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
             ),
           ),
           WidgetSpan(
@@ -57,10 +45,9 @@ class MinMaxTemperatureWidget extends StatelessWidget {
               offset: Offset(0, -4),
               child: Text(
                 "°C",
-                style: TextStyle(
-                  color: isNight ? Color(0xFF8499c2) : Color(0xFF91cce3),
+                style: TextStyles.alegreyaSansMedium.copyWith(
                   fontSize: 12,
-                  fontWeight: FontWeight.bold,
+                  color: isNight ? Color(0xFF8499c2) : Color(0xFF91cce3),
                 ),
               ),
             ),
