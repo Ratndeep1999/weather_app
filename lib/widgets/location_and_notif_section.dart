@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/widgets/two_items_widget.dart';
 
+import '../commons/text_styles.dart';
+
 class LocationAndNotifSection extends StatelessWidget {
   const LocationAndNotifSection({
     super.key,
@@ -25,7 +27,7 @@ class LocationAndNotifSection extends StatelessWidget {
           SizedBox(width: width * 0.02), //8
           Text(
             "Fortaleza",
-            style: TextStyle(color: Colors.white, fontSize: 16),
+            style: TextStyles.sfProSemibold,
           ),
           SizedBox(width: width * 0.04), //16
           SvgPicture.asset(
