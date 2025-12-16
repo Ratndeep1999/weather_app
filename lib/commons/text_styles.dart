@@ -19,6 +19,7 @@ class TextStyles {
   // Sf_Pro_Regular style
   static TextStyle sfProRegular = TextStyle(
     fontWeight: FontWeight.w400,
+    fontSize: 20.0,
     color: Colors.white,
     fontFamily: 'Sf_Pro', // 'AlegreyaSans'
   );
