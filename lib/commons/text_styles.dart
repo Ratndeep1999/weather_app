@@ -4,6 +4,7 @@ class TextStyles {
   // Sf_Pro_Semibold style
   static TextStyle sfProSemibold = TextStyle(
     fontWeight: FontWeight.w600,
+    fontSize: 18.0,
     color: Colors.white,
     fontFamily: 'Sf_Pro',
   );
