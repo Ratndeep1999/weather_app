@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../commons/text_styles.dart';
 import 'min_max_temperature_widget.dart';
 
 class NextSevenDaysForecastWidget extends StatelessWidget {
@@ -30,11 +31,7 @@ class NextSevenDaysForecastWidget extends StatelessWidget {
         Expanded(
           child: Text(
             forecastDay,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyles.alegreyaSansBold,
           ),
         ),
 
