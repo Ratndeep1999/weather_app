@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../commons/text_styles.dart';
 
 class WeatherActivityWidget extends StatelessWidget {
   const WeatherActivityWidget({
@@ -16,14 +17,7 @@ class WeatherActivityWidget extends StatelessWidget {
     return Row(
       children: [
         SvgPicture.asset(icon),
-        Text(
-          label,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 15,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+        Text(label, style: TextStyles.sfProBold),
       ],
     );
   }
