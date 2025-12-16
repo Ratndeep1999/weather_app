@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/widgets/two_items_widget.dart';
+import '../commons/text_styles.dart';
 
 class TodayHourlyForecastFirstRowWidget extends StatelessWidget {
   const TodayHourlyForecastFirstRowWidget({super.key, required this.today});
@@ -10,7 +11,7 @@ class TodayHourlyForecastFirstRowWidget extends StatelessWidget {
   _getTodayFormatedDate() {
     final month = _getMonth(today.month);
     final date = today.day;
-    final currentFormatedDate = "$month,\t${date.toString().padLeft(2, '0')}";
+    final currentFormatedDate = "$month,${date.toString().padLeft(2, '0')}";
     return currentFormatedDate;
   }
 
@@ -49,17 +50,13 @@ class TodayHourlyForecastFirstRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TwoItemsWidget(
-      firstWidget: const Text(
+      firstWidget: Text(
         "Today",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
+        style: TextStyles.sfProBold.copyWith(fontSize: 20),
       ),
       secondWidget: Text(
         _getTodayFormatedDate(),
-        style: const TextStyle(color: Colors.white, fontSize: 20),
+        style: TextStyles.sfProRegular.copyWith(fontSize: 18),
       ),
     );
   }
