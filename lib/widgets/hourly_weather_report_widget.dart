@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../commons/text_styles.dart';
 import 'background_decorated_box_widget.dart';
 
 class HourlyWeatherReportWidget extends StatelessWidget {
@@ -39,7 +40,7 @@ class HourlyWeatherReportWidget extends StatelessWidget {
           /// Temperature
           Text(
             "$temperature°C",
-            style: TextStyle(color: Colors.white, fontSize: 18),
+            style: TextStyles.sfProRegular,
           ),
           SizedBox(height: height * 0.02), // 16
           /// Weather Report Icon
@@ -52,7 +53,7 @@ class HourlyWeatherReportWidget extends StatelessWidget {
           /// Hours
           Text(
             "$hours.00",
-            style: TextStyle(color: Colors.white, fontSize: 18),
+            style: TextStyles.sfProRegular,
           ),
         ],
       ),
