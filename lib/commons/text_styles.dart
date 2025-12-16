@@ -12,6 +12,7 @@ class TextStyles {
   // Sf_Pro_Bold style
   static TextStyle sfProBold = TextStyle(
     fontWeight: FontWeight.w700,
+    fontSize: 15,
     color: Colors.white,
     fontFamily: 'Sf_Pro',
   );
@@ -27,6 +28,7 @@ class TextStyles {
   // AlegreyaSansBold style
   static TextStyle alegreyaSansBold = TextStyle(
     fontWeight: FontWeight.w700,
+
     color: Colors.white,
     fontFamily: 'AlegreyaSans',
   );
