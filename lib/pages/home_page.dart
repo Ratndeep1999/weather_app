@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
+import 'package:weather_app/widgets/background_decorated_box_widget.dart';
 import '../widgets/current_temperature_section.dart';
 import '../widgets/current_weather_activity_section.dart';
 import '../widgets/location_and_notif_section.dart';
@@ -17,7 +19,9 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   late final bool isNight;
   late final DateTime today;
+
   double get width => MediaQuery.of(context).size.width;
+
   double get height => MediaQuery.of(context).size.height;
 
   @override
@@ -30,9 +34,9 @@ class HomePageState extends State<HomePage> {
   _getDayOrNight() {
     today = DateTime.now();
     final currentHours = today.hour;
-    // print("Current Hours : $currentHours");
+    debugPrint("Current Hours : $currentHours");
     isNight = currentHours > 18 || currentHours < 6;
-    // print("Is Night = $isNight");
+    debugPrint("Is Night = $isNight");
   }
 
   @override
@@ -58,18 +62,63 @@ class HomePageState extends State<HomePage> {
                 CurrentTemperatureSection(isNight: isNight),
                 SizedBox(height: height * 0.05), //40
                 /// Current Weather Activity Section
-                CurrentWeatherActivitySection(isNight: isNight, width: width, height: height),
+                CurrentWeatherActivitySection(
+                  isNight: isNight,
+                  width: width,
+                  height: height,
+                ),
+                SizedBox(height: height * 0.025), //20
+                /// Twilight Section
+                TodayTwilightSection(isNight: isNight, width: width, height: height),
                 SizedBox(height: height * 0.025), //20
                 /// Today's Hourly Forecast Section
-                TodayHourlyForecastSection(isNight: isNight, width: width, height: height, today: today),
+                TodayHourlyForecastSection(
+                  isNight: isNight,
+                  width: width,
+                  height: height,
+                  today: today,
+                ),
                 SizedBox(height: height * 0.025), //20
                 /// Next Forecast  Section
-                NextForecastSection(isNight: isNight, width: width, height: height,today: today),
+                NextForecastSection(
+                  isNight: isNight,
+                  width: width,
+                  height: height,
+                  today: today,
+                ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class TodayTwilightSection extends StatelessWidget {
+  const TodayTwilightSection({
+    super.key,
+    required this.isNight,
+    required this.width,
+    required this.height,
+  });
+
+  final bool isNight;
+  final double width;
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return BackgroundDecoratedBoxWidget(
+      isNight: isNight,
+      customWidget: Column(
+        children: [
+          Row(children: [Text("Sunrise")]),
+          Row(children: [Text("Moonrise")]),
+        ],
+      ),
+      horizontalPadding: width * 0.05,
+      verticalPadding: height * 0.0125,
     );
   }
 }
