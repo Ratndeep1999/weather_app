@@ -28,7 +28,7 @@ class LeftAlignTwilightWidget extends StatelessWidget {
             /// Icon
             SvgPicture.asset(
               icon,
-              height: height * 0.04, // 40
+              height: height * 0.04, // 32
               width: width * 0.2, // 40
             ),
             SizedBox(width: width * 0.01),
