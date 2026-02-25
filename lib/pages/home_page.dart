@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
-import 'package:weather_app/widgets/background_decorated_box_widget.dart';
 import '../widgets/current_temperature_section.dart';
 import '../widgets/current_weather_activity_section.dart';
 import '../widgets/location_and_notif_section.dart';
 import '../widgets/next_forecast_section.dart';
 import '../widgets/today_hourly_forecast_section.dart';
+import '../widgets/today_twilight_section.dart';
 import '../widgets/weather_icon.dart';
 
 class HomePage extends StatefulWidget {
@@ -69,7 +68,11 @@ class HomePageState extends State<HomePage> {
                 ),
                 SizedBox(height: height * 0.025), //20
                 /// Twilight Section
-                TodayTwilightSection(isNight: isNight, width: width, height: height),
+                TodayTwilightSection(
+                  isNight: isNight,
+                  width: width,
+                  height: height,
+                ),
                 SizedBox(height: height * 0.025), //20
                 /// Today's Hourly Forecast Section
                 TodayHourlyForecastSection(
@@ -91,34 +94,6 @@ class HomePageState extends State<HomePage> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class TodayTwilightSection extends StatelessWidget {
-  const TodayTwilightSection({
-    super.key,
-    required this.isNight,
-    required this.width,
-    required this.height,
-  });
-
-  final bool isNight;
-  final double width;
-  final double height;
-
-  @override
-  Widget build(BuildContext context) {
-    return BackgroundDecoratedBoxWidget(
-      isNight: isNight,
-      customWidget: Column(
-        children: [
-          Row(children: [Text("Sunrise")]),
-          Row(children: [Text("Moonrise")]),
-        ],
-      ),
-      horizontalPadding: width * 0.05,
-      verticalPadding: height * 0.0125,
     );
   }
 }
