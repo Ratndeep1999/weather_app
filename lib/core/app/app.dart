@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/pages/home_page.dart';
-
 import '../../pages/splash_page.dart';
 
 class App extends StatelessWidget {
