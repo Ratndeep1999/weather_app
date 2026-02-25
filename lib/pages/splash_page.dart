@@ -11,16 +11,18 @@ class SplashPage extends StatefulWidget {
 class SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    _moveToNextScreen();
+    _goToNextPage();
     super.initState();
   }
 
   /// navigate to next screen
-  _moveToNextScreen() async {
-    await Future.delayed(const Duration(seconds: 2));
-    Navigator.pushReplacement(context,
-      MaterialPageRoute(builder: (_) => HomePage()),
-    );
+  _goToNextPage() {
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => HomePage()),
+      );
+    });
   }
 
   @override
