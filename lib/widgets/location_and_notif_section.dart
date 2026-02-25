@@ -9,32 +9,34 @@ class LocationAndNotifSection extends StatelessWidget {
     super.key,
     required this.width,
     required this.height,
+    required this.selectLocationTap,
   });
 
+  final VoidCallback selectLocationTap;
   final double width;
   final double height;
 
   @override
   Widget build(BuildContext context) {
     return TwoItemsWidget(
-      firstWidget: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SvgPicture.asset(
-            "assets/icons/location.svg",
-            semanticsLabel: "location",
-          ),
-          SizedBox(width: width * 0.02), //8
-          Text(
-            "Fortaleza",
-            style: TextStyles.sfProSemibold,
-          ),
-          SizedBox(width: width * 0.04), //16
-          SvgPicture.asset(
-            "assets/icons/down_arrow.svg",
-            semanticsLabel: "select location",
-          ),
-        ],
+      firstWidget: InkWell(
+        onTap: selectLocationTap,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset(
+              "assets/icons/location.svg",
+              semanticsLabel: "location",
+            ),
+            SizedBox(width: width * 0.02), //8
+            Text("Fortaleza", style: TextStyles.sfProSemibold),
+            SizedBox(width: width * 0.04), //16
+            SvgPicture.asset(
+              "assets/icons/down_arrow.svg",
+              semanticsLabel: "select location",
+            ),
+          ],
+        ),
       ),
       secondWidget: Stack(
         clipBehavior: Clip.none,
