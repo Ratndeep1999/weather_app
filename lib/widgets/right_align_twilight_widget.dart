@@ -21,6 +21,7 @@ class RightAlignTwilightWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Row(
           children: [
