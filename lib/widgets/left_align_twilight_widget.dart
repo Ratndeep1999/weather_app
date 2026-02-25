@@ -8,8 +8,12 @@ class LeftAlignTwilightWidget extends StatelessWidget {
     super.key,
     required this.height,
     required this.width,
+    required this.icon,
+    required this.label,
   });
 
+  final String icon;
+  final String label;
   final double height;
   final double width;
 
@@ -17,16 +21,15 @@ class LeftAlignTwilightWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        /// Icon then Text
         Row(
           children: [
             SvgPicture.asset(
-              "assets/icons/sunrise.svg",
+              icon,
               height: height * 0.04, // 40
               width: width * 0.2, // 40
             ),
             SizedBox(width: width * 0.01),
-            Text("Sunrise", style: TextStyles.alegreyaSansBold),
+            Text(label, style: TextStyles.alegreyaSansBold),
           ],
         ),
         // Timing
