@@ -18,6 +18,8 @@ class LocationPage extends StatefulWidget {
 }
 
 class LocationPageState extends State<LocationPage> {
+  late double width, height;
+
   @override
   void initState() {
     super.initState();
@@ -26,6 +28,8 @@ class LocationPageState extends State<LocationPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    width = widget.width;
+    height = widget.height;
   }
 
   @override
