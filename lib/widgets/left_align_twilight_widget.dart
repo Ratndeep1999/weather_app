@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../commons/text_styles.dart';
+import 'package:weather_app/commons/text_styles.dart';
 
 class LeftAlignTwilightWidget extends StatelessWidget {
   const LeftAlignTwilightWidget({
@@ -10,10 +9,12 @@ class LeftAlignTwilightWidget extends StatelessWidget {
     required this.width,
     required this.icon,
     required this.label,
+    required this.actionTime,
   });
 
   final String icon;
   final String label;
+  final String actionTime;
   final double height;
   final double width;
 
@@ -23,17 +24,21 @@ class LeftAlignTwilightWidget extends StatelessWidget {
       children: [
         Row(
           children: [
+            /// Icon
             SvgPicture.asset(
               icon,
               height: height * 0.04, // 40
               width: width * 0.2, // 40
             ),
             SizedBox(width: width * 0.01),
+
+            /// Label
             Text(label, style: TextStyles.alegreyaSansBold),
           ],
         ),
-        // Timing
-        Text("06 am", style: TextStyles.alegreyaSansBold),
+
+        /// Action Timing
+        Text(actionTime, style: TextStyles.alegreyaSansBold),
       ],
     );
   }
