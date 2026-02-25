@@ -19,9 +19,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   late final bool isNight;
   late final DateTime nowDT;
-
   double get width => MediaQuery.of(context).size.width;
-
   double get height => MediaQuery.of(context).size.height;
 
   @override
