@@ -19,7 +19,9 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   late final bool isNight;
   late final DateTime nowDT;
+
   double get width => MediaQuery.of(context).size.width;
+
   double get height => MediaQuery.of(context).size.height;
 
   @override
@@ -99,6 +101,9 @@ class HomePageState extends State<HomePage> {
 
   /// To Navigate Location Page
   void _selectLocationPage() {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => LocationPage()));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => LocationPage(isNight: isNight)),
+    );
   }
 }
