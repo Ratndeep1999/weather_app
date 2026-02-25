@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../commons/text_styles.dart';
 
 class RightAlignTwilightWidget extends StatelessWidget {
@@ -8,8 +7,14 @@ class RightAlignTwilightWidget extends StatelessWidget {
     super.key,
     required this.width,
     required this.height,
+    required this.label,
+    required this.icon,
+    required this.actionTime,
   });
 
+  final String label;
+  final String icon;
+  final String actionTime;
   final double width;
   final double height;
 
@@ -17,20 +22,23 @@ class RightAlignTwilightWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        /// Text then Icon
         Row(
           children: [
-            Text("Sunset", style: TextStyles.alegreyaSansBold),
+            /// Label
+            Text(label, style: TextStyles.alegreyaSansBold),
             SizedBox(width: width * 0.01),
+
+            /// Icon
             SvgPicture.asset(
-              "assets/icons/sunset.svg",
+              icon,
               height: height * 0.04, // 40
               width: width * 0.2, // 40
             ),
           ],
         ),
-        // Timing
-        Text("06 pm", style: TextStyles.alegreyaSansBold),
+
+        /// Action Timing
+        Text(actionTime, style: TextStyles.alegreyaSansBold),
       ],
     );
   }
