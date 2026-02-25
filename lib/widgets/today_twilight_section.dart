@@ -45,7 +45,7 @@ class TodayTwilightSection extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          SizedBox(height: height * 0.025), // 20
 
           Row(
             children: [
