@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/pages/location_page.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import '../widgets/current_temperature_section.dart';
 import '../widgets/current_weather_activity_section.dart';
@@ -17,10 +18,8 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   late final bool isNight;
-  late final DateTime today;
-
+  late final DateTime nowDT;
   double get width => MediaQuery.of(context).size.width;
-
   double get height => MediaQuery.of(context).size.height;
 
   @override
@@ -31,11 +30,8 @@ class HomePageState extends State<HomePage> {
 
   /// Method to get Night or Not
   _getDayOrNight() {
-    today = DateTime.now();
-    final currentHours = today.hour;
-    debugPrint("Current Hours : $currentHours");
-    isNight = currentHours > 18 || currentHours < 6;
-    debugPrint("Is Night = $isNight");
+    nowDT = DateTime.now();
+    isNight = nowDT.hour > 18 || nowDT.hour < 6;
   }
 
   @override
@@ -52,7 +48,11 @@ class HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 /// Location and Notification Section
-                LocationAndNotifSection(width: width, height: height),
+                LocationAndNotifSection(
+                  width: width,
+                  height: height,
+                  selectLocationTap: _selectLocationPage,
+                ),
                 SizedBox(height: height * 0.0625), //50
                 /// Weather Icon
                 WeatherIcon(height: height, width: width),
@@ -79,7 +79,7 @@ class HomePageState extends State<HomePage> {
                   isNight: isNight,
                   width: width,
                   height: height,
-                  today: today,
+                  today: nowDT,
                 ),
                 SizedBox(height: height * 0.025), //20
                 /// Next Forecast  Section
@@ -87,13 +87,21 @@ class HomePageState extends State<HomePage> {
                   isNight: isNight,
                   width: width,
                   height: height,
-                  today: today,
+                  today: nowDT,
                 ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  /// To Navigate Location Page
+  void _selectLocationPage() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => LocationPage()),
     );
   }
 }
