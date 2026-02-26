@@ -65,7 +65,7 @@ class LocationPageState extends State<LocationPage> {
                 isLoading: isLoading,
                 width: width,
                 height: height,
-                onTap: () => debugPrint("Current Location Tap"),
+                onTap: getCurrentPosition,
               ),
               SizedBox(height: height * 0.0125), // 10
               /// Current Lat and Long.
@@ -82,7 +82,7 @@ class LocationPageState extends State<LocationPage> {
               /// Submit Button
               SubmitButtonWidget(
                 isNight: widget.isNight,
-                onTap: getCurrentPosition,
+                onTap: (){},
               ),
             ],
           ),
