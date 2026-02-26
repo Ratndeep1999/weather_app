@@ -71,6 +71,8 @@ class LocationPageState extends State<LocationPage> {
                 isNight: widget.isNight,
                 width: width,
                 height: height,
+                lat: 0.0,
+                long: 0.0,
               ),
               Spacer(),
 
