@@ -102,6 +102,20 @@ class LocationPageState extends State<LocationPage> {
       return;
     }
 
+    LocationSettings locationSettings = LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 50,
+    );
+    debugPrint("LocationSetting : ${locationSettings.accuracy}");
+    debugPrint("LocationSetting : ${locationSettings.distanceFilter}");
+
+    Position position = await Geolocator.getCurrentPosition(
+      locationSettings: locationSettings,
+    );
+    setState(() {
+      _lat = position.latitude;
+      _long = position.longitude;
+    });
   }
 
   Future<String?> checkLocationPermission() async {
