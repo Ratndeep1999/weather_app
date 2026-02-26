@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/commons/text_styles.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import 'package:weather_app/widgets/background_decorated_box_widget.dart';
+import 'package:weather_app/widgets/current_location_widget.dart';
 import 'package:weather_app/widgets/search_location_widget.dart';
 
 class LocationPage extends StatefulWidget {
@@ -52,6 +53,7 @@ class LocationPageState extends State<LocationPage> {
               SearchLocationWidget(
                 searchController: searchController,
                 isNight: widget.isNight,
+                onTap: () {},
               ),
               SizedBox(height: 30),
 
@@ -60,10 +62,11 @@ class LocationPageState extends State<LocationPage> {
                 isNight: widget.isNight,
                 width: width,
                 height: height,
+                onTap: () {},
               ),
               SizedBox(height: 30),
 
-              /// Current Location Lat and Long.
+              /// Current Lat and Long.
               BackgroundDecoratedBoxWidget(
                 isNight: widget.isNight,
                 horizontalPadding: width * 0.05,
@@ -102,41 +105,3 @@ class LocationPageState extends State<LocationPage> {
     );
   }
 }
-
-/// Refactored Current Location Widget
-class CurrentLocationWidget extends StatelessWidget {
-  const CurrentLocationWidget({
-    super.key,
-    required this.isNight,
-    required this.width,
-    required this.height,
-  });
-
-  final bool isNight;
-  final double width;
-  final double height;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => debugPrint("Current Location got"),
-      child: BackgroundDecoratedBoxWidget(
-        isNight: isNight,
-        horizontalPadding: width * 0.05,
-        verticalPadding: height * 0.0125,
-        customWidget: Row(
-          children: [
-            /// Icon
-            Icon(Icons.location_on, color: Colors.white),
-            SizedBox(width: 20),
-
-            /// Text
-            Text("Current Location", style: TextStyles.alegreyaSansBold),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
