@@ -71,6 +71,7 @@ class LocationPageState extends State<LocationPage> {
               /// Current Lat and Long.
               CurrentLatAndLongWidget(
                 isNight: widget.isNight,
+                isLoading: isLoading,
                 width: width,
                 height: height,
                 lat: _lat ?? 0.00,
