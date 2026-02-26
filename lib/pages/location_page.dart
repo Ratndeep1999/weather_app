@@ -67,20 +67,10 @@ class LocationPageState extends State<LocationPage> {
               SizedBox(height: 30),
 
               /// Current Lat and Long.
-              BackgroundDecoratedBoxWidget(
+              CurrentLatAndLongWidget(
                 isNight: widget.isNight,
-                horizontalPadding: width * 0.05,
-                verticalPadding: height * 0.0125,
-                customWidget: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    /// Latitude
-                    Text("Latitude : 0.0", style: TextStyles.alegreyaSansBold),
-
-                    /// Longitude
-                    Text("Longitude : 0.0", style: TextStyles.alegreyaSansBold),
-                  ],
-                ),
+                width: width,
+                height: height,
               ),
 
               Spacer(),
@@ -101,6 +91,37 @@ class LocationPageState extends State<LocationPage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CurrentLatAndLongWidget extends StatelessWidget {
+  const CurrentLatAndLongWidget({
+    super.key,
+    required this.isNight,
+    required this.width,
+    required this.height,
+  });
+
+  final bool isNight;
+  final double height, width;
+
+  @override
+  Widget build(BuildContext context) {
+    return BackgroundDecoratedBoxWidget(
+      isNight: isNight,
+      horizontalPadding: width * 0.05,
+      verticalPadding: height * 0.0125,
+      customWidget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          /// Latitude
+          Text("Latitude : 0.0", style: TextStyles.alegreyaSansBold),
+
+          /// Longitude
+          Text("Longitude : 0.0", style: TextStyles.alegreyaSansBold),
+        ],
       ),
     );
   }
