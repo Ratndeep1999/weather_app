@@ -27,7 +27,7 @@ class CurrentLocationWidget extends StatelessWidget {
           children: [
             /// Icon
             Icon(Icons.location_on, color: Colors.white),
-            SizedBox(width: 20),
+            SizedBox(width: width * 0.045), // 18
 
             /// Text
             Text("Current Location", style: TextStyles.alegreyaSansBold),
