@@ -110,8 +110,6 @@ class LocationPageState extends State<LocationPage> {
       accuracy: LocationAccuracy.high,
       distanceFilter: 50,
     );
-    debugPrint("LocationSetting : ${locationSettings.accuracy}");
-    debugPrint("LocationSetting : ${locationSettings.distanceFilter}");
 
     Position position = await Geolocator.getCurrentPosition(
       locationSettings: locationSettings,
