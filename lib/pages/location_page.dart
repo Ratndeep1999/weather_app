@@ -104,6 +104,7 @@ class LocationPageState extends State<LocationPage> {
       showSnackBar(errorMsg);
       return;
     }
+    setState(() => isLoading = true);
 
     LocationSettings locationSettings = LocationSettings(
       accuracy: LocationAccuracy.high,
@@ -115,7 +116,9 @@ class LocationPageState extends State<LocationPage> {
     Position position = await Geolocator.getCurrentPosition(
       locationSettings: locationSettings,
     );
+
     setState(() {
+      isLoading = false;
       _lat = position.latitude;
       _long = position.longitude;
     });
