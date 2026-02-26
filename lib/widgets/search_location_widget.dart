@@ -6,15 +6,17 @@ class SearchLocationWidget extends StatelessWidget {
     super.key,
     required this.searchController,
     required this.isNight,
+    required this.onTap,
   });
 
+  final VoidCallback onTap;
   final TextEditingController searchController;
   final bool isNight;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => debugPrint("Search Location got"),
+      onTap: onTap,
       child: TextField(
         controller: searchController,
         keyboardType: TextInputType.text,
