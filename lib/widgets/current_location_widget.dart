@@ -9,10 +9,11 @@ class CurrentLocationWidget extends StatelessWidget {
     required this.width,
     required this.height,
     required this.onTap,
+    required this.isLoading,
   });
 
   final VoidCallback onTap;
-  final bool isNight;
+  final bool isNight, isLoading;
   final double height, width;
 
   @override
@@ -26,9 +27,17 @@ class CurrentLocationWidget extends StatelessWidget {
         customWidget: Row(
           children: [
             /// Icon
-            Icon(Icons.location_on, color: Colors.white),
+            isLoading
+                ? const SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                      strokeWidth: 2,
+                    ),
+                  )
+                : const Icon(Icons.location_on, color: Colors.white),
             SizedBox(width: width * 0.045), // 18
-
             /// Text
             Text("Current Location", style: TextStyles.alegreyaSansBold),
           ],
