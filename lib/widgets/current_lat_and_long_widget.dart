@@ -10,10 +10,11 @@ class CurrentLatAndLongWidget extends StatelessWidget {
     required this.height,
     required double lat,
     required double long,
+    required this.isLoading,
   }) : _lat = lat,
        _long = long;
 
-  final bool isNight;
+  final bool isNight, isLoading;
   final double height, width, _lat, _long;
 
   @override
@@ -26,15 +27,28 @@ class CurrentLatAndLongWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           /// Latitude
-          buildLabel("Latitude : $_lat"),
+          buildLabel("Latitude : ", _lat),
 
           /// Longitude
-          buildLabel("Longitude : $_long"),
+          buildLabel("Longitude : ", _long),
         ],
       ),
     );
   }
 
-  Text buildLabel(String label) =>
-      Text(label, style: TextStyles.alegreyaSansBold);
+  Widget buildLabel(String label, double value) => Row(
+    children: [
+      /// Label
+      Text(label, style: TextStyles.alegreyaSansBold),
+      isLoading
+          ? const Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 32),
+                child: LinearProgressIndicator(),
+              ),
+            )
+          /// Value
+          : Text("$value", style: TextStyles.alegreyaSansBold),
+    ],
+  );
 }
