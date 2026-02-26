@@ -53,7 +53,7 @@ class LocationPageState extends State<LocationPage> {
               SearchLocationWidget(
                 searchController: searchController,
                 isNight: widget.isNight,
-                onTap: () => debugPrint("Search Location Tap"),
+                onChanged: (value) => debugPrint("Search Location Tap $value"),
               ),
               SizedBox(height: 30),
 
