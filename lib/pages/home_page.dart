@@ -10,7 +10,9 @@ import '../widgets/today_twilight_section.dart';
 import '../widgets/weather_icon.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required this.nowDT, required this.isNight});
+  final bool isNight;
+  final DateTime nowDT;
 
   @override
   State<HomePage> createState() => HomePageState();
@@ -18,20 +20,13 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   late final bool isNight;
-  late final DateTime nowDT;
   double get width => MediaQuery.of(context).size.width;
   double get height => MediaQuery.of(context).size.height;
 
   @override
   void initState() {
-    _getDayOrNight();
     super.initState();
-  }
-
-  /// Method to get Night or Not
-  _getDayOrNight() {
-    nowDT = DateTime.now();
-    isNight = nowDT.hour > 18 || nowDT.hour < 6;
+    isNight = widget.isNight;
   }
 
   @override
@@ -79,7 +74,7 @@ class HomePageState extends State<HomePage> {
                   isNight: isNight,
                   width: width,
                   height: height,
-                  today: nowDT,
+                  today: widget.nowDT,
                 ),
                 SizedBox(height: height * 0.025), //20
                 /// Next Forecast  Section
@@ -87,7 +82,7 @@ class HomePageState extends State<HomePage> {
                   isNight: isNight,
                   width: width,
                   height: height,
-                  today: nowDT,
+                  today: widget.nowDT,
                 ),
               ],
             ),
