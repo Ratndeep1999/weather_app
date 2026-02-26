@@ -10,7 +10,8 @@ class CurrentLatAndLongWidget extends StatelessWidget {
     required this.height,
     required double lat,
     required double long,
-  }) : _lat = lat, _long = long;
+  }) : _lat = lat,
+       _long = long;
 
   final bool isNight;
   final double height, width, _lat, _long;
@@ -25,12 +26,15 @@ class CurrentLatAndLongWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           /// Latitude
-          Text("Latitude : $_lat", style: TextStyles.alegreyaSansBold),
+          buildLabel("Latitude : $_lat"),
 
           /// Longitude
-          Text("Longitude : $_long", style: TextStyles.alegreyaSansBold),
+          buildLabel("Longitude : $_long"),
         ],
       ),
     );
   }
+
+  Text buildLabel(String label) =>
+      Text(label, style: TextStyles.alegreyaSansBold);
 }
