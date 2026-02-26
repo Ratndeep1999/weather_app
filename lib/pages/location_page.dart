@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/commons/text_styles.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
-import 'package:weather_app/widgets/background_decorated_box_widget.dart';
+import 'package:weather_app/widgets/current_lat_and_long_widget.dart';
 import 'package:weather_app/widgets/current_location_widget.dart';
 import 'package:weather_app/widgets/search_location_widget.dart';
 
@@ -72,22 +72,10 @@ class LocationPageState extends State<LocationPage> {
                 width: width,
                 height: height,
               ),
-
               Spacer(),
 
               /// Submit Button
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(
-                      widget.isNight ? Color(0xFF0c3a8a) : Color(0xFF278dc4),
-                    ),
-                  ),
-                  child: Text("Submit", style: TextStyles.alegreyaSansBold),
-                ),
-              ),
+              SubmitButtonWidget(isNight: widget.isNight, onTap: () {}),
             ],
           ),
         ),
@@ -96,32 +84,28 @@ class LocationPageState extends State<LocationPage> {
   }
 }
 
-class CurrentLatAndLongWidget extends StatelessWidget {
-  const CurrentLatAndLongWidget({
+class SubmitButtonWidget extends StatelessWidget {
+  const SubmitButtonWidget({
     super.key,
     required this.isNight,
-    required this.width,
-    required this.height,
+    required this.onTap,
   });
 
+  final VoidCallback onTap;
   final bool isNight;
-  final double height, width;
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundDecoratedBoxWidget(
-      isNight: isNight,
-      horizontalPadding: width * 0.05,
-      verticalPadding: height * 0.0125,
-      customWidget: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          /// Latitude
-          Text("Latitude : 0.0", style: TextStyles.alegreyaSansBold),
-
-          /// Longitude
-          Text("Longitude : 0.0", style: TextStyles.alegreyaSansBold),
-        ],
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: onTap,
+        style: ButtonStyle(
+          backgroundColor: WidgetStatePropertyAll(
+            isNight ? Color(0xFF0c3a8a) : Color(0xFF278dc4),
+          ),
+        ),
+        child: Text("Submit", style: TextStyles.alegreyaSansBold),
       ),
     );
   }
