@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import 'package:weather_app/widgets/current_lat_and_long_widget.dart';
 import 'package:weather_app/widgets/current_location_widget.dart';
@@ -23,6 +24,7 @@ class LocationPage extends StatefulWidget {
 class LocationPageState extends State<LocationPage> {
   late double width, height;
   late TextEditingController searchController;
+  double? _lat, _long;
 
   @override
   void initState() {
@@ -69,20 +71,41 @@ class LocationPageState extends State<LocationPage> {
                 isNight: widget.isNight,
                 width: width,
                 height: height,
-                lat: 0.0,
-                long: 0.0,
+                lat: _lat ?? 0.00,
+                long: _long ?? 0.00,
               ),
               Spacer(),
 
               /// Submit Button
               SubmitButtonWidget(
                 isNight: widget.isNight,
-                onTap: () => debugPrint("Submit Button Tap"),
+                onTap: getCurrentPosition,
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  /// Snack bar method
+  showSnackBar(String label) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(label)));
+  }
+
+  /// Get Current Location
+  Future<void> getCurrentPosition() async {
+    final String? errorMsg = await checkLocationPermission();
+
+    if (errorMsg != null) {
+      showSnackBar(errorMsg);
+      return;
+    }
+
+  }
+
+  Future<String?> checkLocationPermission() async {
+
+    return null;
   }
 }
