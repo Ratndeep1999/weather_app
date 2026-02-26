@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/commons/text_styles.dart';
 import 'package:weather_app/widgets/background_decorated_box_widget.dart';
 import 'home_page.dart';
 
@@ -44,7 +45,12 @@ class SplashPageState extends State<SplashPage> {
         isNight: _getDayOrNight(),
         horizontalPadding: 16,
         verticalPadding: 16,
-        customWidget: Center(child: Text("Weather Forcest App")),
+        customWidget: Center(
+          child: Text(
+            "Weather Forcest App",
+            style: TextStyles.alegreyaSansBold.copyWith(fontSize: 38),
+          ),
+        ),
       ),
     );
   }
