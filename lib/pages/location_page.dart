@@ -25,6 +25,7 @@ class LocationPageState extends State<LocationPage> {
   late double width, height;
   late TextEditingController searchController;
   double? _lat, _long;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -61,6 +62,7 @@ class LocationPageState extends State<LocationPage> {
               /// Select Current Location
               CurrentLocationWidget(
                 isNight: widget.isNight,
+                isLoading: isLoading,
                 width: width,
                 height: height,
                 onTap: () => debugPrint("Current Location Tap"),
