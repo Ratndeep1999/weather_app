@@ -21,9 +21,11 @@ class LocationPage extends StatefulWidget {
 
 class LocationPageState extends State<LocationPage> {
   late double width, height;
+  late TextEditingController searchController;
 
   @override
   void initState() {
+    searchController = TextEditingController();
     super.initState();
   }
 
@@ -47,9 +49,37 @@ class LocationPageState extends State<LocationPage> {
           child: Column(
             children: [
               /// Location Search Bar
+              InkWell(
+                onTap: () => debugPrint("Search Location got"),
+                child: TextField(
+                  controller: searchController,
+                  keyboardType: TextInputType.text,
+                  style: TextStyles.alegreyaSansBold,
+                  textCapitalization: TextCapitalization.words,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search, color: Colors.white),
+                    hint: Text(
+                      "Search Location",
+                      style: TextStyles.alegreyaSansBold,
+                    ),
+                    filled: true,
+                    fillColor: widget.isNight
+                        ? Color(0xFF0c3a8a)
+                        : Color(0xFF278dc4),
+                    contentPadding: EdgeInsets.zero,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                    isDense: false,
+                  ),
+                ),
+              ),
+              SizedBox(height: 30),
+
               /// Select Current Location
               InkWell(
-                onTap: ()=> debugPrint("Current Location got"),
+                onTap: () => debugPrint("Current Location got"),
                 child: BackgroundDecoratedBoxWidget(
                   isNight: widget.isNight,
                   horizontalPadding: width * 0.05,
