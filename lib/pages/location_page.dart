@@ -53,7 +53,7 @@ class LocationPageState extends State<LocationPage> {
               SearchLocationWidget(
                 searchController: searchController,
                 isNight: widget.isNight,
-                onTap: () {},
+                onTap: () => debugPrint("Search Location Tap"),
               ),
               SizedBox(height: 30),
 
@@ -62,7 +62,7 @@ class LocationPageState extends State<LocationPage> {
                 isNight: widget.isNight,
                 width: width,
                 height: height,
-                onTap: () {},
+                onTap: () => debugPrint("Current Location Tap"),
               ),
               SizedBox(height: 30),
 
@@ -75,7 +75,10 @@ class LocationPageState extends State<LocationPage> {
               Spacer(),
 
               /// Submit Button
-              SubmitButtonWidget(isNight: widget.isNight, onTap: () {}),
+              SubmitButtonWidget(
+                isNight: widget.isNight,
+                onTap: () => debugPrint("Submit Button Tap"),
+              ),
             ],
           ),
         ),
