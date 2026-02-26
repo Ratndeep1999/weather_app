@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/commons/text_styles.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import 'package:weather_app/widgets/background_decorated_box_widget.dart';
+import 'package:weather_app/widgets/search_location_widget.dart';
 
 class LocationPage extends StatefulWidget {
   const LocationPage({
@@ -12,8 +13,7 @@ class LocationPage extends StatefulWidget {
   });
 
   final bool isNight;
-  final double width;
-  final double height;
+  final double width, height;
 
   @override
   State<LocationPage> createState() => LocationPageState();
@@ -56,26 +56,10 @@ class LocationPageState extends State<LocationPage> {
               SizedBox(height: 30),
 
               /// Select Current Location
-              InkWell(
-                onTap: () => debugPrint("Current Location got"),
-                child: BackgroundDecoratedBoxWidget(
-                  isNight: widget.isNight,
-                  horizontalPadding: width * 0.05,
-                  verticalPadding: height * 0.0125,
-                  customWidget: Row(
-                    children: [
-                      /// Icon
-                      Icon(Icons.location_on, color: Colors.white),
-                      SizedBox(width: 20),
-
-                      /// Text
-                      Text(
-                        "Current Location",
-                        style: TextStyles.alegreyaSansBold,
-                      ),
-                    ],
-                  ),
-                ),
+              CurrentLocationWidget(
+                isNight: widget.isNight,
+                width: width,
+                height: height,
               ),
               SizedBox(height: 30),
 
@@ -119,41 +103,40 @@ class LocationPageState extends State<LocationPage> {
   }
 }
 
-/// Refactored Search Location Widget
-class SearchLocationWidget extends StatelessWidget {
-  const SearchLocationWidget({
+/// Refactored Current Location Widget
+class CurrentLocationWidget extends StatelessWidget {
+  const CurrentLocationWidget({
     super.key,
-    required this.searchController,
     required this.isNight,
+    required this.width,
+    required this.height,
   });
 
-  final TextEditingController searchController;
   final bool isNight;
+  final double width;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => debugPrint("Search Location got"),
-      child: TextField(
-        controller: searchController,
-        keyboardType: TextInputType.text,
-        style: TextStyles.alegreyaSansBold,
-        textCapitalization: TextCapitalization.words,
-        decoration: InputDecoration(
-          prefixIcon: Icon(Icons.search, color: Colors.white),
-          hint: Text("Search Location", style: TextStyles.alegreyaSansBold),
-          filled: true,
-          fillColor: isNight ? Color(0xFF0c3a8a) : Color(0xFF278dc4),
-          contentPadding: EdgeInsets.zero,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide.none,
-          ),
-          isDense: false,
+      onTap: () => debugPrint("Current Location got"),
+      child: BackgroundDecoratedBoxWidget(
+        isNight: isNight,
+        horizontalPadding: width * 0.05,
+        verticalPadding: height * 0.0125,
+        customWidget: Row(
+          children: [
+            /// Icon
+            Icon(Icons.location_on, color: Colors.white),
+            SizedBox(width: 20),
+
+            /// Text
+            Text("Current Location", style: TextStyles.alegreyaSansBold),
+          ],
         ),
       ),
     );
   }
 }
 
-// Refactored Current Location Widget
+
