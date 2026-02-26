@@ -55,8 +55,7 @@ class LocationPageState extends State<LocationPage> {
                 isNight: widget.isNight,
                 onChanged: (value) => debugPrint("Search Location Tap $value"),
               ),
-              SizedBox(height: 30),
-
+              SizedBox(height: height * 0.0225), //18
               /// Select Current Location
               CurrentLocationWidget(
                 isNight: widget.isNight,
@@ -64,8 +63,7 @@ class LocationPageState extends State<LocationPage> {
                 height: height,
                 onTap: () => debugPrint("Current Location Tap"),
               ),
-              SizedBox(height: 30),
-
+              SizedBox(height: height * 0.0125), // 10
               /// Current Lat and Long.
               CurrentLatAndLongWidget(
                 isNight: widget.isNight,
