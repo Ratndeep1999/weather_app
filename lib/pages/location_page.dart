@@ -105,7 +105,30 @@ class LocationPageState extends State<LocationPage> {
   }
 
   Future<String?> checkLocationPermission() async {
+    bool isLocationOn = await Geolocator.isLocationServiceEnabled();
+    LocationPermission permission = await Geolocator.checkPermission();
+    debugPrint("Permission: $permission");
 
+    /// Device Location Status
+    if (!isLocationOn) {
+      return 'Location services are disabled.';
+    } else {
+      /// If denied
+      if (permission == LocationPermission.denied) {
+        /// Request for location
+        permission = await Geolocator.requestPermission();
+
+        /// Check Permission Status
+        if (permission == LocationPermission.denied) {
+          return 'Location permissions are denied';
+        }
+      }
+
+      /// Check Permission Status Again  [permission = requestPermission() Here]
+      if (permission == LocationPermission.deniedForever) {
+        return 'Location permissions are permanently denied, we cannot request permissions.';
+      }
+    }
     return null;
   }
 }
