@@ -146,5 +146,6 @@ class LocationPageState extends State<LocationPage> {
 
   /// Submit Button
   void submit() {
+    Navigator.pop(context,_lat);
   }
 }
