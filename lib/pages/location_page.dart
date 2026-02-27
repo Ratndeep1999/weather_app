@@ -80,10 +80,7 @@ class LocationPageState extends State<LocationPage> {
               Spacer(),
 
               /// Submit Button
-              SubmitButtonWidget(
-                isNight: widget.isNight,
-                onTap: (){},
-              ),
+              SubmitButtonWidget(isNight: widget.isNight, onTap: () {}),
             ],
           ),
         ),
@@ -92,16 +89,16 @@ class LocationPageState extends State<LocationPage> {
   }
 
   /// Snack bar method
-  showSnackBar(String label) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(label)));
-  }
+  showSnackBar(String label) {}
 
   /// Get Current Location
   Future<void> getCurrentPosition() async {
     final String? errorMsg = await checkLocationPermission();
 
     if (errorMsg != null) {
-      showSnackBar(errorMsg);
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(errorMsg)));
       return;
     }
     setState(() => isLoading = true);
@@ -130,23 +127,24 @@ class LocationPageState extends State<LocationPage> {
     /// Device Location Status
     if (!isLocationOn) {
       return 'Location services are disabled.';
-    } else {
-      /// If denied
+    }
+
+    /// If denied
+    if (permission == LocationPermission.denied) {
+      /// Store requestPermission()
+      permission = await Geolocator.requestPermission();
+
+      /// Ask Permission and Store Status
       if (permission == LocationPermission.denied) {
-        /// Request for location
-        permission = await Geolocator.requestPermission();
-
-        /// Check Permission Status
-        if (permission == LocationPermission.denied) {
-          return 'Location permissions are denied';
-        }
-      }
-
-      /// Check Permission Status Again  [permission = requestPermission() Here]
-      if (permission == LocationPermission.deniedForever) {
-        return 'Location permissions are permanently denied, we cannot request permissions.';
+        return 'Location permissions are denied';
       }
     }
+
+    /// Ask Permission Again and Store Status
+    if (permission == LocationPermission.deniedForever) {
+      return 'Location permissions are permanently denied, we cannot request permissions.';
+    }
+
     return null;
   }
 }
