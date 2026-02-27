@@ -36,8 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   # svg content
   flutter_svg: ^2.2.3
-  # current location
+  # location service
   geolocator: ^14.0.2
+  # api service
+  http: ^1.6.0
 
 dev_dependencies:
   flutter_test:
