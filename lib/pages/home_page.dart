@@ -93,13 +93,14 @@ class HomePageState extends State<HomePage> {
   }
 
   /// To Navigate Location Page
-  void _selectLocationPage() {
-    Navigator.push(
+  Future<void> _selectLocationPage() async {
+    double lat = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (_) =>
             LocationPage(isNight: isNight, width: width, height: height),
       ),
     );
+    print("lat : $lat");
   }
 }
