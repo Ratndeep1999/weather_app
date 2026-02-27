@@ -80,7 +80,7 @@ class LocationPageState extends State<LocationPage> {
               Spacer(),
 
               /// Submit Button
-              SubmitButtonWidget(isNight: widget.isNight, onTap: () {}),
+              SubmitButtonWidget(isNight: widget.isNight, onTap: submit),
             ],
           ),
         ),
@@ -116,15 +116,14 @@ class LocationPageState extends State<LocationPage> {
     });
   }
 
+  /// Location Permission
   Future<String?> checkLocationPermission() async {
     bool isLocationOn = await Geolocator.isLocationServiceEnabled();
     LocationPermission permission = await Geolocator.checkPermission();
     debugPrint("Permission: $permission");
 
     /// Device Location Status
-    if (!isLocationOn) {
-      return 'Location services are disabled.';
-    }
+    if (!isLocationOn) return 'Location services are disabled.';
 
     /// If denied
     if (permission == LocationPermission.denied) {
@@ -143,5 +142,9 @@ class LocationPageState extends State<LocationPage> {
     }
 
     return null;
+  }
+
+  /// Submit Button
+  void submit() {
   }
 }
