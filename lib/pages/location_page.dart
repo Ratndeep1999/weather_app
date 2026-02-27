@@ -88,9 +88,6 @@ class LocationPageState extends State<LocationPage> {
     );
   }
 
-  /// Snack bar method
-  showSnackBar(String label) {}
-
   /// Get Current Location
   Future<void> getCurrentPosition() async {
     final String? errorMsg = await checkLocationPermission();
