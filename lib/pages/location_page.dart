@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/Services/network_service.dart';
+import 'package:weather_app/models/weatherModel.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import 'package:weather_app/widgets/current_lat_and_long_widget.dart';
 import 'package:weather_app/widgets/current_location_widget.dart';
@@ -146,9 +147,14 @@ class LocationPageState extends State<LocationPage> {
   }
 
   /// Submit Button
-  void submit() {
-    // Navigator.pop(context,_lat);
+  Future<void> submit() async {
     NetworkService networkService = NetworkService();
-    networkService.getForecastData(lat: _lat ?? 0.0, long: _long ?? 0.0);
+    /// Pass 'lat' and 'long' and get weatherModel with data
+    final WeatherModel? weatherModel = await networkService.getForecastData(
+      lat: _lat ?? 0.0,
+      long: _long ?? 0.0,
+    );
+    /// Return "weatherModel" to HomePage
+    Navigator.pop(context, weatherModel);
   }
 }
