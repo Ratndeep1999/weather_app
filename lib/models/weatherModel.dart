@@ -262,24 +262,25 @@ class Current {
 
 /// Condition class
 class Condition {
-  final Text? text;
-  final Icon? icon;
-  // final int? code;
+  final String? text;
+  final String? icon;
+  final int? code;
 
-  Condition({this.text, this.icon});
+  Condition({this.text, this.icon, this.code});
 
   factory Condition.fromJson(Map<String, dynamic> json) => Condition(
-    text: textValues.map[json["text"]]!,
-    icon: iconValues.map[json["icon"]]!,
-    // code: json["code"],
+    text: json["text"] ?? "",
+    icon: json["icon"] ?? "",
+    code: json["code"] ?? 0,
   );
 
   Map<String, dynamic> toJson() => {
-    "text": textValues.reverse[text],
-    "icon": iconValues.reverse[icon],
-    // "code": code,
+    "text": text,
+    "icon": icon,
+    "code": code,
   };
 }
+
 
 /// Text of Condition class
 enum Text { CLEAR, SUNNY }
