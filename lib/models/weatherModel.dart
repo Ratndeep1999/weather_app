@@ -274,29 +274,8 @@ class Condition {
     code: json["code"] ?? 0,
   );
 
-  Map<String, dynamic> toJson() => {
-    "text": text,
-    "icon": icon,
-    "code": code,
-  };
+  Map<String, dynamic> toJson() => {"text": text, "icon": icon, "code": code};
 }
-
-
-/// Text of Condition class
-enum Text { CLEAR, SUNNY }
-final textValues = EnumValues({"Clear": Text.CLEAR, "Sunny": Text.SUNNY});
-
-/// Icon of Condition class
-enum Icon {
-  CDN_WEATHERAPI_COM_WEATHER_64_X64_DAY_113_PNG,
-  CDN_WEATHERAPI_COM_WEATHER_64_X64_NIGHT_113_PNG,
-}
-final iconValues = EnumValues({
-  "//cdn.weatherapi.com/weather/64x64/day/113.png":
-      Icon.CDN_WEATHERAPI_COM_WEATHER_64_X64_DAY_113_PNG,
-  "//cdn.weatherapi.com/weather/64x64/night/113.png":
-      Icon.CDN_WEATHERAPI_COM_WEATHER_64_X64_NIGHT_113_PNG,
-});
 
 /// Forecast class
 class Forecast {
@@ -306,14 +285,18 @@ class Forecast {
 
   /// fromJson()
   factory Forecast.fromJson(Map<String, dynamic> json) => Forecast(
-    forecastday: json["forecastday"] == null ? [] : List<Forecastday>.from(
+    forecastday: json["forecastday"] == null
+        ? []
+        : List<Forecastday>.from(
             json["forecastday"]!.map((x) => Forecastday.fromJson(x)),
           ),
   );
 
   /// toJson()
   Map<String, dynamic> toJson() => {
-    "forecastday": forecastday == null ? [] : List<dynamic>.from(forecastday!.map((x) => x.toJson())),
+    "forecastday": forecastday == null
+        ? []
+        : List<dynamic>.from(forecastday!.map((x) => x.toJson())),
   };
 }
 
@@ -334,7 +317,9 @@ class Forecastday {
     // dateEpoch: json["date_epoch"],
     day: json["day"] == null ? null : Day.fromJson(json["day"]),
     astro: json["astro"] == null ? null : Astro.fromJson(json["astro"]),
-    hour: json["hour"] == null ? [] : List<Current>.from(json["hour"]!.map((x) => Current.fromJson(x))),
+    hour: json["hour"] == null
+        ? []
+        : List<Current>.from(json["hour"]!.map((x) => Current.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -342,16 +327,19 @@ class Forecastday {
     // "date_epoch": dateEpoch,
     "day": day?.toJson(),
     "astro": astro?.toJson(),
-    "hour": hour == null ? [] : List<dynamic>.from(hour!.map((x) => x.toJson())),
+    "hour": hour == null
+        ? []
+        : List<dynamic>.from(hour!.map((x) => x.toJson())),
   };
 }
-
 
 /// Day class
 class Day {
   final double? maxtempC;
+
   // final double? maxtempF;
   final double? mintempC;
+
   // final double? mintempF;
   // final double? avgtempC;
   // final double? avgtempF;
@@ -368,6 +356,7 @@ class Day {
   // final int? dailyWillItSnow;
   // final int? dailyChanceOfSnow;
   final Condition? condition;
+
   // final double? uv;
 
   Day({
@@ -412,7 +401,9 @@ class Day {
     // dailyChanceOfRain: json["daily_chance_of_rain"],
     // dailyWillItSnow: json["daily_will_it_snow"],
     // dailyChanceOfSnow: json["daily_chance_of_snow"],
-    condition: json["condition"] == null ? null : Condition.fromJson(json["condition"]),
+    condition: json["condition"] == null
+        ? null
+        : Condition.fromJson(json["condition"]),
     // uv: json["uv"]?.toDouble(),
   );
 
@@ -446,6 +437,7 @@ class Astro {
   final String? sunset;
   final String? moonrise;
   final String? moonset;
+
   // final String? moonPhase;
   // final int? moonIllumination;
   // final int? isMoonUp;
