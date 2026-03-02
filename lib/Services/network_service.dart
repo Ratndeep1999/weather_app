@@ -7,7 +7,7 @@ class NetworkService {
   static const String apiKey = "301f8508689e4070acd160811262702";
 
   /// Hit api and return data
-  Future<WeatherModel> getForecastData({
+  Future<WeatherModel?> getForecastData({
     required double lat,
     required double long,
     int days = 7,
