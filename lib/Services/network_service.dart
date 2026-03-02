@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_app/models/weatherModel.dart';
 
@@ -7,8 +6,8 @@ class NetworkService {
   static const String baseUrl = "http://api.weatherapi.com/v1/";
   static const String apiKey = "301f8508689e4070acd160811262702";
 
-  ///
-  Future<void> getForecastData({
+  /// Hit api and return data
+  Future<WeatherModel> getForecastData({
     required double lat,
     required double long,
     int days = 7,
@@ -25,16 +24,7 @@ class NetworkService {
     final mapResponse = jsonDecode(jsonResponse.body);
 
     /// Assign values to WeatherModel class variables using fromJson() factory constructor
-    final weather = WeatherModel.fromJson(mapResponse);
-    debugPrint("Name: ${weather.location?.name}");
-    debugPrint("Region: ${weather.location?.region}");
-    debugPrint("Country: ${weather.location?.country}");
-    debugPrint("Current Temp: ${weather.current?.tempC}");
-    debugPrint("Humidity: ${weather.current?.humidity}");
-    debugPrint("Sunrise : ${weather.forecast?.forecastday?[0].astro?.sunrise}");
-
-    // debugPrint(jsonResponse.request?.url.toString());
-    // debugPrint(jsonResponse.statusCode.toString());
-    // debugPrint(jsonResponse.body);
+    final WeatherModel weatherResponse = WeatherModel.fromJson(mapResponse);
+    return weatherResponse;
   }
 }
