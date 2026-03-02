@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:weather_app/Services/network_service.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import 'package:weather_app/widgets/current_lat_and_long_widget.dart';
 import 'package:weather_app/widgets/current_location_widget.dart';
@@ -146,6 +147,8 @@ class LocationPageState extends State<LocationPage> {
 
   /// Submit Button
   void submit() {
-    Navigator.pop(context,_lat);
+    // Navigator.pop(context,_lat);
+    NetworkService networkService = NetworkService();
+    networkService.getForecastData(lat: _lat ?? 0.0, long: _long ?? 0.0);
   }
 }
