@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:weather_app/models/weatherModel.dart';
 
 class NetworkService {
   static const String baseUrl = "http://api.weatherapi.com/v1/";
@@ -11,12 +13,28 @@ class NetworkService {
     required double long,
     int days = 7,
   }) async {
-    final url = Uri.parse(
+    /// String to "Uri"
+    final Uri url = Uri.parse(
       "${baseUrl}forecast.json?key=$apiKey&q=$lat,$long &days=$days&aqi=no&alerts=no",
     );
-    final response = await http.get(url);
-    debugPrint(response.request?.url.toString());
-    debugPrint(response.statusCode.toString());
-    debugPrint(response.body);
+
+    /// Get jsonResponse from server (String)
+    final jsonResponse = await http.get(url);
+
+    /// Convert jsonResponse (String) to mapResponse (Map <String, dynamic>)
+    final mapResponse = jsonDecode(jsonResponse.body);
+
+    /// Assign values to WeatherModel class variables using fromJson() factory constructor
+    final weather = WeatherModel.fromJson(mapResponse);
+    debugPrint("Name: ${weather.location?.name}");
+    debugPrint("Region: ${weather.location?.region}");
+    debugPrint("Country: ${weather.location?.country}");
+    debugPrint("Current Temp: ${weather.current?.tempC}");
+    debugPrint("Humidity: ${weather.current?.humidity}");
+    debugPrint("Sunrise : ${weather.forecast?.forecastday?[0].astro?.sunrise}");
+
+    // debugPrint(jsonResponse.request?.url.toString());
+    // debugPrint(jsonResponse.statusCode.toString());
+    // debugPrint(jsonResponse.body);
   }
 }
