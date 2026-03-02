@@ -15,6 +15,8 @@ class NetworkService {
       "${baseUrl}forecast.json?key=$apiKey&q=$lat,$long &days=$days&aqi=no&alerts=no",
     );
     final response = await http.get(url);
-    debugPrint(response.toString());
+    debugPrint(response.request?.url.toString());
+    debugPrint(response.statusCode.toString());
+    debugPrint(response.body);
   }
 }
