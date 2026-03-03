@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/weatherModel.dart';
 import 'package:weather_app/widgets/background_decorated_box_widget.dart';
 import 'package:weather_app/widgets/hourly_weather_report_widget.dart';
 import 'package:weather_app/widgets/today_hourly_forecast_first_row_widget.dart';
@@ -10,8 +11,10 @@ class TodayHourlyForecastSection extends StatelessWidget {
     required this.width,
     required this.height,
     required this.today,
+    this.weatherModel,
   });
 
+  final WeatherModel? weatherModel;
   final bool isNight;
   final double width;
   final double height;
@@ -34,127 +37,25 @@ class TodayHourlyForecastSection extends StatelessWidget {
           /// First Row
           TodayHourlyForecastFirstRowWidget(today: today),
           SizedBox(height: height * 0.02), //16
-
           /// Hourly Weather Report
-          // SizedBox(
-          //   height: 170,
-          //   child: ListView.builder(
-          //     scrollDirection: Axis.horizontal,
-          //     itemCount: 1,
-          //     itemBuilder: (_, index) {
-          //       return HourlyWeatherReportWidget(
-          //         isNight: isNight,
-          //         width: width,
-          //         height: height,
-          //         temperature: isNight ? "29" : "31",
-          //         icon: "assets/icons/sunny_cloud.svg",
-          //         hours: _getHours(-1),
-          //       );
-          //     },
-          //   ),
-          // ),
-
           SizedBox(
             height: height * 0.2125,
-            child: ListView(scrollDirection: Axis.horizontal,children: [
-              /// First Hour Report
-              HourlyWeatherReportWidget(
-                isNight: isNight,
-                width: width,
-                height: height,
-                temperature: isNight ? "29" : "31",
-                icon: "assets/icons/sunny_cloud.svg",
-                hours: _getHours(-1),
-              ),
-
-              /// Second Hour Report
-              HourlyWeatherReportWidget(
-                isNight: isNight,
-                width: width,
-                height: height,
-                temperature: isNight ? "26" : "30",
-                icon: "assets/icons/rain_cloud.svg",
-                hours: _getHours(0),
-                isCurrentHours: true,
-              ),
-
-              /// Third Hour Report
-              HourlyWeatherReportWidget(
-                isNight: isNight,
-                width: width,
-                height: height,
-                temperature: isNight ? "24" : "28",
-                icon: "assets/icons/thunder.svg",
-                hours: _getHours(1),
-              ),
-
-              /// Fourth Hour Report
-              HourlyWeatherReportWidget(
-                isNight: isNight,
-                width: width,
-                height: height,
-                temperature: isNight ? "23" : "28",
-                icon: "assets/icons/moon_cloud.svg",
-                hours: _getHours(2),
-              ),
-
-              /// Fifth Hour Report
-              HourlyWeatherReportWidget(
-                isNight: isNight,
-                width: width,
-                height: height,
-                temperature: isNight ? "23" : "28",
-                icon: "assets/icons/moon_cloud.svg",
-                hours: _getHours(2),
-              ),
-            ],),
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: weatherModel?.forecast?.forecastday?[0].hour?.length,
+              itemBuilder: (BuildContext context, int index) {
+                /// Hourly Weather Report Item
+                return HourlyWeatherReportWidget(
+                  isNight: isNight,
+                  width: width,
+                  height: height,
+                  temperature: weatherModel?.forecast?.forecastday?[0].hour?[0].tempC?.toStringAsFixed(0) ?? "--",
+                  icon: "assets/icons/sunny_cloud.svg",
+                  hours: _getHours(-1),
+                );
+              },
+            ),
           ),
-
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   children: [
-          //     /// First Hour Report
-          //     HourlyWeatherReportWidget(
-          //       isNight: isNight,
-          //       width: width,
-          //       height: height,
-          //       temperature: isNight ? "29" : "31",
-          //       icon: "assets/icons/sunny_cloud.svg",
-          //       hours: _getHours(-1),
-          //     ),
-          //
-          //     /// Second Hour Report
-          //     HourlyWeatherReportWidget(
-          //       isNight: isNight,
-          //       width: width,
-          //       height: height,
-          //       temperature: isNight ? "26" : "30",
-          //       icon: "assets/icons/rain_cloud.svg",
-          //       hours: _getHours(0),
-          //       isCurrentHours: true,
-          //     ),
-          //
-          //     /// Third Hour Report
-          //     HourlyWeatherReportWidget(
-          //       isNight: isNight,
-          //       width: width,
-          //       height: height,
-          //       temperature: isNight ? "24" : "28",
-          //       icon: "assets/icons/thunder.svg",
-          //       hours: _getHours(1),
-          //     ),
-          //
-          //     /// Fourth Hour Report
-          //     HourlyWeatherReportWidget(
-          //       isNight: isNight,
-          //       width: width,
-          //       height: height,
-          //       temperature: isNight ? "23" : "28",
-          //       icon: "assets/icons/moon_cloud.svg",
-          //       hours: _getHours(2),
-          //     ),
-          //   ],
-          // ),
         ],
       ),
     );
