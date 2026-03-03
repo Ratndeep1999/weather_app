@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 import '../commons/text_styles.dart';
 
 class CurrentTemperatureSection extends StatelessWidget {
-  const CurrentTemperatureSection({super.key, required this.isNight});
+  const CurrentTemperatureSection({
+    super.key,
+    required this.isNight,
+    required this.currentTempC,
+  });
 
   final bool isNight;
+  final double currentTempC;
 
   @override
   Widget build(BuildContext context) {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-        text: isNight ? " 28°\n" : " 30°\n",
+        text: "$currentTempC",
         style: TextStyles.sfProSemibold.copyWith(fontSize: 80.0),
         semanticsLabel: "Temperature",
         children: [
