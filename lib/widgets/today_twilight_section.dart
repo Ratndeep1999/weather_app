@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/weatherModel.dart';
 import 'package:weather_app/widgets/right_align_twilight_widget.dart';
 import 'background_decorated_box_widget.dart';
 import 'left_align_twilight_widget.dart';
@@ -9,8 +10,10 @@ class TodayTwilightSection extends StatelessWidget {
     required this.isNight,
     required this.width,
     required this.height,
+    required this.weatherModel,
   });
 
+  final WeatherModel? weatherModel;
   final bool isNight;
   final double width;
   final double height;
@@ -31,7 +34,9 @@ class TodayTwilightSection extends StatelessWidget {
                 width: width,
                 icon: "assets/icons/sunrise.svg",
                 label: "Sunrise",
-                actionTime: "06 am",
+                actionTime:
+                    weatherModel?.forecast?.forecastday?[0].astro?.sunrise ??
+                    "-- AM",
               ),
               Spacer(),
 
@@ -41,7 +46,9 @@ class TodayTwilightSection extends StatelessWidget {
                 height: height,
                 label: "Sunset",
                 icon: "assets/icons/sunset.svg",
-                actionTime: "06 pm",
+                actionTime:
+                    weatherModel?.forecast?.forecastday?[0].astro?.sunset ??
+                    "-- PM",
               ),
             ],
           ),
@@ -55,7 +62,9 @@ class TodayTwilightSection extends StatelessWidget {
                 width: width,
                 icon: "assets/icons/moonrise.svg",
                 label: "Moonrise",
-                actionTime: "07 pm",
+                actionTime:
+                    weatherModel?.forecast?.forecastday?[0].astro?.moonrise ??
+                    "-- PM",
               ),
               Spacer(),
 
@@ -65,7 +74,9 @@ class TodayTwilightSection extends StatelessWidget {
                 height: height,
                 label: "Moonset",
                 icon: "assets/icons/moonset.svg",
-                actionTime: "05 am",
+                actionTime:
+                    weatherModel?.forecast?.forecastday?[0].astro?.moonset ??
+                    "-- AM",
               ),
             ],
           ),
