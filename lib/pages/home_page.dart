@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/weatherModel.dart';
 import 'package:weather_app/pages/location_page.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import '../widgets/current_temperature_section.dart';
@@ -11,6 +12,7 @@ import '../widgets/weather_icon.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.nowDT, required this.isNight});
+
   final bool isNight;
   final DateTime nowDT;
 
@@ -19,8 +21,11 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  WeatherModel? weatherModel;
   late final bool isNight;
+
   double get width => MediaQuery.of(context).size.width;
+
   double get height => MediaQuery.of(context).size.height;
 
   @override
@@ -47,6 +52,10 @@ class HomePageState extends State<HomePage> {
                   width: width,
                   height: height,
                   selectLocationTap: _selectLocationPage,
+                  location: weatherModel?.location?.name != null
+                      ? "${weatherModel?.location?.name},"
+                      : 'Select Location',
+                  region: weatherModel?.location?.region ?? '',
                 ),
                 SizedBox(height: height * 0.0625), //50
                 /// Weather Icon
@@ -92,15 +101,17 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-  /// To Navigate Location Page
+  /// Navigate Location Page
   Future<void> _selectLocationPage() async {
-    double? lat = await Navigator.push(
+    weatherModel = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (_) =>
             LocationPage(isNight: isNight, width: width, height: height),
       ),
     );
-    print("lat : $lat");
+    if (weatherModel != null) {
+      setState(() {});
+    }
   }
 }
