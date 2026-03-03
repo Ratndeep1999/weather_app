@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 
 class WeatherIcon extends StatelessWidget {
-  const WeatherIcon({
-    super.key,
-    required this.height,
-    required this.width,
-    this.icon,
-  });
+  const WeatherIcon({super.key, this.icon, required this.iconSize});
 
   final String? icon;
-  final double height;
-  final double width;
+  final double iconSize;
 
   @override
   Widget build(BuildContext context) {
@@ -18,30 +12,25 @@ class WeatherIcon extends StatelessWidget {
         /// Weather status icon
         ? Image.network(
             "http:$icon",
-            height: height * 0.225,
-            width: width * 0.45,
+            height: iconSize,
+            width: iconSize,
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) {
               /// Server error status icon
               return Image.asset(
                 "assets/icons/server_error.png",
-                height: height * 0.225,
-                width: width * 0.45,
+                height: iconSize,
+                width: iconSize,
+                fit: BoxFit.fill,
               );
             },
           )
         /// Location error status if icon is null
         : Image.asset(
             "assets/icons/location_error.png",
-            height: height * 0.225,
-            width: width * 0.45,
+            height: iconSize,
+            width: iconSize,
+            fit: BoxFit.fill,
           );
-
-    // SvgPicture.asset(
-    // "assets/icons/sun_cloud.svg",
-    // height: height * 0.225,
-    // width: width * 0.45,
-    // semanticsLabel: "Sunny",
-    // );
   }
 }
