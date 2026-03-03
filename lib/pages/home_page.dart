@@ -23,9 +23,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   WeatherModel? weatherModel;
   late final bool isNight;
-
   double get width => MediaQuery.of(context).size.width;
-
   double get height => MediaQuery.of(context).size.height;
 
   @override
@@ -73,6 +71,7 @@ class HomePageState extends State<HomePage> {
                   isNight: isNight,
                   width: width,
                   height: height,
+                  weatherModel: weatherModel,
                 ),
                 SizedBox(height: height * 0.025), //20
                 /// Twilight Section
