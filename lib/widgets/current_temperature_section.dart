@@ -1,28 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/weatherModel.dart';
 import '../commons/text_styles.dart';
 
 class CurrentTemperatureSection extends StatelessWidget {
-  const CurrentTemperatureSection({
-    super.key,
-    required this.isNight,
-    required this.currentTempC,
-  });
+  const CurrentTemperatureSection({super.key, this.weatherModel});
 
-  final bool isNight;
-  final double currentTempC;
+  final WeatherModel? weatherModel;
 
   @override
   Widget build(BuildContext context) {
+    final String currentTepmC = weatherModel?.current?.tempC != null
+        ? "${weatherModel?.current?.tempC?.toStringAsFixed(0)}°"
+        : "--";
+    final String? max =
+        weatherModel?.forecast?.forecastday?[0].day?.maxtempC?.toStringAsFixed(
+          0,
+        ) ??
+        "--";
+    final String? min =
+        weatherModel?.forecast?.forecastday?[0].day?.mintempC?.toStringAsFixed(
+          0,
+        ) ??
+        "--";
+
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-        text: "$currentTempC",
+        /// Current Temperature
+        text: currentTepmC,
         style: TextStyles.sfProSemibold.copyWith(fontSize: 80.0),
         semanticsLabel: "Temperature",
         children: [
-          TextSpan(text: "Precipitations\n", style: TextStyles.sfProRegular),
+          TextSpan(text: "\nPrecipitations\n", style: TextStyles.sfProRegular),
+
+          /// Min and Max Temperature
           TextSpan(
-            text: isNight ? "Max.: 31°   Min.: 25°" : "Max.: 34°   Min.: 28°",
+            text: "Max.: $max°   Min.: $min°",
             style: TextStyles.sfProRegular,
           ),
         ],
