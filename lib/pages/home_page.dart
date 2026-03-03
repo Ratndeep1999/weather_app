@@ -66,7 +66,7 @@ class HomePageState extends State<HomePage> {
                 ),
                 SizedBox(height: height * 0.025), // 20
                 /// Current Temperature Section
-                CurrentTemperatureSection(isNight: isNight),
+                CurrentTemperatureSection(weatherModel: weatherModel),
                 SizedBox(height: height * 0.05), //40
                 /// Current Weather Activity Section
                 CurrentWeatherActivitySection(
