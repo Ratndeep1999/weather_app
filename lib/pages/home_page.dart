@@ -59,7 +59,11 @@ class HomePageState extends State<HomePage> {
                 ),
                 SizedBox(height: height * 0.0625), //50
                 /// Weather Icon
-                WeatherIcon(height: height, width: width),
+                WeatherIcon(
+                  height: height,
+                  width: width,
+                  icon: weatherModel?.current?.condition?.icon,
+                ),
                 SizedBox(height: height * 0.025), // 20
                 /// Current Temperature Section
                 CurrentTemperatureSection(isNight: isNight),
