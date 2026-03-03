@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/widgets/two_items_widget.dart';
-
 import '../commons/text_styles.dart';
 
 class LocationAndNotifSection extends StatelessWidget {
@@ -10,8 +9,12 @@ class LocationAndNotifSection extends StatelessWidget {
     required this.width,
     required this.height,
     required this.selectLocationTap,
+    required this.location,
+    required this.region,
   });
 
+  final String location;
+  final String region;
   final VoidCallback selectLocationTap;
   final double width;
   final double height;
@@ -29,7 +32,7 @@ class LocationAndNotifSection extends StatelessWidget {
               semanticsLabel: "location",
             ),
             SizedBox(width: width * 0.02), //8
-            Text("Fortaleza", style: TextStyles.sfProSemibold),
+            Text("$location $region", style: TextStyles.sfProSemibold),
             SizedBox(width: width * 0.04), //16
             SvgPicture.asset(
               "assets/icons/down_arrow.svg",
