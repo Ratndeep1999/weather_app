@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:weather_app/widgets/weather_icon.dart';
 import '../commons/text_styles.dart';
 import 'background_decorated_box_widget.dart';
 
@@ -21,7 +21,7 @@ class HourlyWeatherReportWidget extends StatelessWidget {
   final String temperature;
   final String icon;
   final String hours;
-  final bool? isCurrentHours;
+  final bool isCurrentHours;
 
   @override
   Widget build(BuildContext context) {
@@ -30,24 +30,20 @@ class HourlyWeatherReportWidget extends StatelessWidget {
       padding: EdgeInsets.only(right: width * 0.032), // 12
       child: BackgroundDecoratedBoxWidget(
         isNight: isNight,
-        boxWidth: width * 0.18, //70
+        boxWidth: width * 0.18, // 70
         horizontalPadding: width * 0.0,
-        verticalPadding: height * 0.02, //16
-        backgroundColor: isCurrentHours!
+        verticalPadding: height * 0.02, // 16
+        backgroundColor: isCurrentHours
             ? (isNight ? Color(0xFF12428d) : Color(0xFF2d92cc))
             : null,
-        isBorder: isCurrentHours!,
+        isBorder: isCurrentHours,
         customWidget: Column(
           children: [
             /// Temperature
             Text("$temperature°C", style: TextStyles.sfProRegular),
             SizedBox(height: height * 0.02), // 16
             /// Weather Report Icon
-            SvgPicture.asset(
-              icon,
-              height: height * 0.05, // 40
-              width: width * 0.2, // 40
-            ),
+            WeatherIcon(iconSize: height * 0.055, icon: icon),
             SizedBox(height: height * 0.02), // 16
             /// Hours
             Text("$hours.00", style: TextStyles.sfProRegular),
