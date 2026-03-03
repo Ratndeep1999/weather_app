@@ -98,7 +98,7 @@ class Current {
   // final String? windDir;
   // final int? pressureMb;
   // final double? pressureIn;
-  final int? precipMm;
+  final double? precipMm;
   // final int? precipIn;
   final int? humidity;
   // final int? cloud;
