@@ -98,10 +98,9 @@ class Current {
   // final String? windDir;
   // final int? pressureMb;
   // final double? pressureIn;
-  // final int? precipMm;
+  final int? precipMm;
   // final int? precipIn;
   final int? humidity;
-
   // final int? cloud;
   // final double? feelslikeC;
   // final double? feelslikeF;
@@ -141,7 +140,7 @@ class Current {
     // this.windDir,
     // this.pressureMb,
     // this.pressureIn,
-    // this.precipMm,
+    this.precipMm,
     // this.precipIn,
     this.humidity,
     // this.cloud,
@@ -186,7 +185,7 @@ class Current {
     // windDir: json["wind_dir"],
     // pressureMb: json["pressure_mb"],
     // pressureIn: json["pressure_in"]?.toDouble(),
-    // precipMm: json["precip_mm"],
+    precipMm: json["precip_mm"],
     // precipIn: json["precip_in"],
     humidity: json["humidity"],
     // cloud: json["cloud"],
@@ -229,7 +228,7 @@ class Current {
     // "wind_dir": windDir,
     // "pressure_mb": pressureMb,
     // "pressure_in": pressureIn,
-    // "precip_mm": precipMm,
+    "precip_mm": precipMm,
     // "precip_in": precipIn,
     "humidity": humidity,
     // "cloud": cloud,
