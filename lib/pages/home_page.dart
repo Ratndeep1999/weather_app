@@ -58,8 +58,7 @@ class HomePageState extends State<HomePage> {
                 SizedBox(height: height * 0.0625), //50
                 /// Weather Icon
                 WeatherIcon(
-                  height: height,
-                  width: width,
+                  iconSize: height * 0.2,
                   icon: weatherModel?.current?.condition?.icon,
                 ),
                 SizedBox(height: height * 0.025), // 20
@@ -79,6 +78,7 @@ class HomePageState extends State<HomePage> {
                   isNight: isNight,
                   width: width,
                   height: height,
+                  weatherModel: weatherModel,
                 ),
                 SizedBox(height: height * 0.025), //20
                 /// Today's Hourly Forecast Section
@@ -87,6 +87,7 @@ class HomePageState extends State<HomePage> {
                   width: width,
                   height: height,
                   today: widget.nowDT,
+                  weatherModel: weatherModel,
                 ),
                 SizedBox(height: height * 0.025), //20
                 /// Next Forecast  Section
