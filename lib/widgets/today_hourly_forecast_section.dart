@@ -54,8 +54,8 @@ class TodayHourlyForecastSection extends StatelessWidget {
                   height: height,
                   temperature: temp,
                   icon: icon,
-                  isCurrentHours: true,
-                  hours: _getHours(-1),
+                  isCurrentHours: index == 0,
+                  hours: _getCurrentHur(hur: index, isCurrHur: (index == 0)),
                 );
               },
             ),
@@ -65,10 +65,11 @@ class TodayHourlyForecastSection extends StatelessWidget {
     );
   }
 
-  /// Method to get Formated hours
-  _getHours(int hours) {
-    final timeData = today.add(Duration(hours: hours));
-    print("TimeData : $timeData");
-    return timeData.hour.toString().padLeft(2, '0');
+  /// Returns formatted time (HH:mm) by adding [hours] to [today].
+  String _getCurrentHur({required int hur, required bool isCurrHur}) {
+    final time = today.add(Duration(hours: hur));
+    final hours = time.hour.toString().padLeft(2, "0");
+    final minutes = time.minute.toString().padLeft(2, "0");
+    return isCurrHur ? "$hours:$minutes" : "$hours:00";
   }
 }
