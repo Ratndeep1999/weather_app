@@ -64,7 +64,7 @@ class TodayTwilightSection extends StatelessWidget {
               LeftAlignTwilightWidget(
                 height: height,
                 width: width,
-                icon: "assets/icons/moonrise.svg",
+                icon: "assets/icons/moonset.svg",
                 label: "Moonrise",
                 actionTime: moonrise,
               ),
@@ -75,7 +75,7 @@ class TodayTwilightSection extends StatelessWidget {
                 width: width,
                 height: height,
                 label: "Moonset",
-                icon: "assets/icons/moonset.svg",
+                icon: "assets/icons/moonrise.svg",
                 actionTime: moonset,
               ),
             ],
