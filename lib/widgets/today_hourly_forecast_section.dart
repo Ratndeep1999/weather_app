@@ -68,8 +68,11 @@ class TodayHourlyForecastSection extends StatelessWidget {
   /// Returns formatted time (HH:mm) by adding [hours] to [today].
   String _getCurrentHur({required int hur, required bool isCurrHur}) {
     final time = today.add(Duration(hours: hur));
-    final hours = time.hour.toString().padLeft(2, "0");
+
+    /// Converts 24 to 12 Hours
+    final istHours = time.hour % 12 == 0 ? 12 : time.hour % 12;
+    final hour = istHours.toString().padLeft(2, '0');
     final minutes = time.minute.toString().padLeft(2, "0");
-    return isCurrHur ? "$hours:$minutes" : "$hours:00";
+    return isCurrHur ? "$hour:$minutes" : "$hour:00";
   }
 }
