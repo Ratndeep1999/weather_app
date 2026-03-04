@@ -99,8 +99,10 @@ class Current {
   // final int? pressureMb;
   // final double? pressureIn;
   final double? precipMm;
+
   // final int? precipIn;
   final int? humidity;
+
   // final int? cloud;
   // final double? feelslikeC;
   // final double? feelslikeF;
@@ -305,7 +307,7 @@ class Forecastday {
   // final int? dateEpoch;
   final Day? day;
   final Astro? astro;
-  final List<Current>? hour;
+  final List<Hour>? hour;
 
   /// Constructor
   Forecastday({this.day, this.astro, this.hour});
@@ -318,7 +320,7 @@ class Forecastday {
     astro: json["astro"] == null ? null : Astro.fromJson(json["astro"]),
     hour: json["hour"] == null
         ? []
-        : List<Current>.from(json["hour"]!.map((x) => Current.fromJson(x))),
+        : List<Hour>.from(json["hour"]!.map((x) => Hour.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -476,14 +478,25 @@ class Astro {
   };
 }
 
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
+/// Hour class
+class Hour {
+  final DateTime? time;
+  final double? tempC;
+  final Condition? condition;
 
-  EnumValues(this.map);
+  Hour({this.time, this.tempC, this.condition});
 
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
+  factory Hour.fromJson(Map<String, dynamic> json) => Hour(
+    time: json["time"] == null ? null : DateTime.parse(json["time"]),
+    tempC: json["temp_c"],
+    condition: json["condition"] == null
+        ? null
+        : Condition.fromJson(json["condition"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "time": "${time!.year.toString().padLeft(4, '0')}-${time!.month.toString().padLeft(2, '0')}-${time!.day.toString().padLeft(2, '0')} ${time!.hour.toString().padLeft(2, '0')}:${time!.minute.toString().padLeft(2, '0')}",
+    "temp_c": tempC,
+    "condition": condition?.toJson(),
+  };
 }
