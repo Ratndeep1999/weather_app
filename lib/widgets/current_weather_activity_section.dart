@@ -19,6 +19,12 @@ class CurrentWeatherActivitySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// Get Current Weather Activities
+    final Current? weathActi = weatherModel?.current;
+    final String rain = weathActi?.precipMm?.toStringAsFixed(0) ?? "--";
+    final String humidity = weathActi?.humidity?.toStringAsFixed(0) ?? "--";
+    final String wind = weathActi?.windKph?.toStringAsFixed(0) ?? "--";
+
     return BackgroundDecoratedBoxWidget(
       isNight: isNight,
       horizontalPadding: width * 0.05, //20
@@ -29,7 +35,8 @@ class CurrentWeatherActivitySection extends StatelessWidget {
           /// rain
           WeatherActivityWidget(
             icon: "assets/icons/rain.svg",
-            label: "${weatherModel?.current?.precipMm?.toStringAsFixed(0) ?? "--"}%",
+            label:
+                "${weatherModel?.current?.precipMm?.toStringAsFixed(0) ?? "--"}%",
           ),
 
           /// humidity
@@ -41,7 +48,8 @@ class CurrentWeatherActivitySection extends StatelessWidget {
           /// wind
           WeatherActivityWidget(
             icon: "assets/icons/wind.svg",
-            label: "${weatherModel?.current?.windKph?.toStringAsFixed(0) ?? "--"}km/h",
+            label:
+                "${weatherModel?.current?.windKph?.toStringAsFixed(0) ?? "--"}km/h",
           ),
         ],
       ),
