@@ -98,6 +98,7 @@ class HomePageState extends State<HomePage> {
                   width: width,
                   height: height,
                   today: widget.nowDT,
+                  weatherModel: weatherModel,
                 ),
               ],
             ),
