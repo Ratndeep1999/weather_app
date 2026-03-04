@@ -20,12 +20,20 @@ class TodayTwilightSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// Get Forecast Day Twilight
+    final Astro? astro = weatherModel?.forecast?.forecastday?[0].astro;
+    final sunrise = astro?.sunrise ?? "-- AM";
+    final sunset = astro?.sunset ?? "-- PM";
+    final moonrise = astro?.moonrise ?? "-- PM";
+    final moonset = astro?.moonset ?? "-- AM";
+
     return BackgroundDecoratedBoxWidget(
       isNight: isNight,
       horizontalPadding: width * 0.05,
       verticalPadding: height * 0.0125,
       customWidget: Column(
         children: [
+          /// Upper Section
           Row(
             children: [
               /// Sunrise
@@ -34,9 +42,7 @@ class TodayTwilightSection extends StatelessWidget {
                 width: width,
                 icon: "assets/icons/sunrise.svg",
                 label: "Sunrise",
-                actionTime:
-                    weatherModel?.forecast?.forecastday?[0].astro?.sunrise ??
-                    "-- AM",
+                actionTime: sunrise,
               ),
               Spacer(),
 
@@ -46,14 +52,12 @@ class TodayTwilightSection extends StatelessWidget {
                 height: height,
                 label: "Sunset",
                 icon: "assets/icons/sunset.svg",
-                actionTime:
-                    weatherModel?.forecast?.forecastday?[0].astro?.sunset ??
-                    "-- PM",
+                actionTime: sunset,
               ),
             ],
           ),
           SizedBox(height: height * 0.025), // 20
-
+          /// Bottom Section
           Row(
             children: [
               /// Moonrise
@@ -62,9 +66,7 @@ class TodayTwilightSection extends StatelessWidget {
                 width: width,
                 icon: "assets/icons/moonrise.svg",
                 label: "Moonrise",
-                actionTime:
-                    weatherModel?.forecast?.forecastday?[0].astro?.moonrise ??
-                    "-- PM",
+                actionTime: moonrise,
               ),
               Spacer(),
 
@@ -74,9 +76,7 @@ class TodayTwilightSection extends StatelessWidget {
                 height: height,
                 label: "Moonset",
                 icon: "assets/icons/moonset.svg",
-                actionTime:
-                    weatherModel?.forecast?.forecastday?[0].astro?.moonset ??
-                    "-- AM",
+                actionTime: moonset,
               ),
             ],
           ),
