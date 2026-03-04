@@ -70,7 +70,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
                   height: height,
                   temperature: temp,
                   icon: icon,
-                  isCurrentHours: false,
+                  isCurrentHours: isSame,
                   hours: "$apiHur:$localMin",
                 );
               },
