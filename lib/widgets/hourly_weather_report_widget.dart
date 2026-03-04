@@ -10,7 +10,7 @@ class HourlyWeatherReportWidget extends StatelessWidget {
     required this.width,
     required this.height,
     required this.temperature,
-    required this.icon,
+    this.icon,
     required this.hours,
     this.isCurrentHours = false,
   });
@@ -19,7 +19,7 @@ class HourlyWeatherReportWidget extends StatelessWidget {
   final double width;
   final double height;
   final String temperature;
-  final String icon;
+  final String? icon;
   final String hours;
   final bool isCurrentHours;
 
@@ -30,9 +30,11 @@ class HourlyWeatherReportWidget extends StatelessWidget {
       padding: EdgeInsets.only(right: width * 0.032), // 12
       child: BackgroundDecoratedBoxWidget(
         isNight: isNight,
-        boxWidth: width * 0.18, // 70
+        boxWidth: width * 0.18,
+        // 70
         horizontalPadding: width * 0.0,
-        verticalPadding: height * 0.02, // 16
+        verticalPadding: height * 0.02,
+        // 16
         backgroundColor: isCurrentHours
             ? (isNight ? Color(0xFF12428d) : Color(0xFF2d92cc))
             : null,
