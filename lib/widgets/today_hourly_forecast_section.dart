@@ -47,6 +47,22 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 final temp = hour?.tempC?.toStringAsFixed(0) ?? "--";
                 final icon = hour?.condition?.icon ?? '';
 
+                /// Get Formatted 12-hour time (HH)
+                final time = hour?.time;
+                final api_hur = time == null
+                    ? "00"
+                    : (time.hour % 12 == 0 ? 12 : time.hour % 12)
+                          .toString()
+                          .padLeft(2, '0');
+
+                /// Get Formatted Minutes
+                final form_hur = (today.hour % 12 == 0 ? 12 : today.hour % 12);
+                final local_hur = form_hur.toString().padLeft(2, '0');
+                final bool isHurSame = (api_hur == local_hur);
+                final form_min = isHurSame
+                    ? today.minute.toString().padLeft(2, '0')
+                    : "00";
+
                 /// Hourly Weather Report Item
                 return HourlyWeatherReportWidget(
                   isNight: isNight,
@@ -54,8 +70,8 @@ class TodayHourlyForecastSection extends StatelessWidget {
                   height: height,
                   temperature: temp,
                   icon: icon,
-                  isCurrentHours: index == 0,
-                  hours: _getCurrentHur(hur: index, isCurrHur: (index == 0)),
+                  isCurrentHours: isHurSame,
+                  hours: "$api_hur:$form_min",
                 );
               },
             ),
@@ -63,16 +79,5 @@ class TodayHourlyForecastSection extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  /// Returns formatted time (HH:mm) by adding [hours] to [today].
-  String _getCurrentHur({required int hur, required bool isCurrHur}) {
-    final time = today.add(Duration(hours: hur));
-
-    /// Converts 24 to 12 Hours
-    final istHours = time.hour % 12 == 0 ? 12 : time.hour % 12;
-    final hour = istHours.toString().padLeft(2, '0');
-    final minutes = time.minute.toString().padLeft(2, "0");
-    return isCurrHur ? "$hour:$minutes" : "$hour:00";
   }
 }
