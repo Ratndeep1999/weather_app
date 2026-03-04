@@ -59,8 +59,9 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 //           .toString()
                 //           .padLeft(2, '0');
 
-
-
+                /// Get hours from local device (HH)
+                final localHur = today.hour.toString().padLeft(2, '0');
+                // debugPrint("Hur: $localHur");
 
                 /// Get Formatted Minutes
                 // final form_hur = (today.hour % 12 == 0 ? 12 : today.hour % 12);
