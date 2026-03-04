@@ -51,7 +51,7 @@ class HomePageState extends State<HomePage> {
                   height: height,
                   selectLocationTap: _selectLocationPage,
                   location: weatherModel?.location?.name != null
-                      ? "${weatherModel?.location?.name},"
+                      ? "${weatherModel!.location!.name},"
                       : 'Select Location',
                   region: weatherModel?.location?.region ?? '',
                 ),
