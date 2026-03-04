@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:weather_app/widgets/weather_icon.dart';
 import '../commons/text_styles.dart';
 import 'min_max_temperature_widget.dart';
 
@@ -10,7 +10,7 @@ class NextSevenDaysForecastWidget extends StatelessWidget {
     required this.height,
     required this.width,
     required this.forecastDay,
-    required this.weatherIcon,
+    required this.icon,
     required this.minTemperature,
     required this.maxTemperature,
   });
@@ -19,7 +19,7 @@ class NextSevenDaysForecastWidget extends StatelessWidget {
   final double height;
   final double width;
   final String forecastDay;
-  final String weatherIcon;
+  final String icon;
   final String minTemperature;
   final String maxTemperature;
 
@@ -36,12 +36,8 @@ class NextSevenDaysForecastWidget extends StatelessWidget {
         ),
 
         /// Weather Report Icon
-        SvgPicture.asset(
-          weatherIcon,
-          height: height * 0.0375, //30
-          width: width * 0.075, //30
-        ),
-        SizedBox(width: width * 0.1875), //75
+        WeatherIcon(icon: icon, iconSize: height * 0.033),
+        SizedBox(width: width * 0.155),
         /// Min And Max Temperature
         MinMaxTemperatureWidget(
           isNight: isNight,
