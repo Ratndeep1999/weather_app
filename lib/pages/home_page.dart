@@ -23,7 +23,9 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   WeatherModel? weatherModel;
   late final bool isNight;
+
   double get width => MediaQuery.of(context).size.width;
+
   double get height => MediaQuery.of(context).size.height;
 
   @override
@@ -59,7 +61,7 @@ class HomePageState extends State<HomePage> {
                 /// Weather Icon
                 WeatherIcon(
                   iconSize: height * 0.2,
-                  icon: weatherModel?.current?.condition?.icon,
+                  icon: weatherModel?.current?.condition?.icon ?? '',
                 ),
                 SizedBox(height: height * 0.025), // 20
                 /// Current Temperature Section
