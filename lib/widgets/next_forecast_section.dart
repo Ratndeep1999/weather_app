@@ -46,6 +46,7 @@ class NextForecastSection extends StatelessWidget {
                 final maxTemp = weekday?[index].day?.maxtempC ?? "--";
                 final minTemp = weekday?[index].day?.mintempC ?? "--";
                 final icon = weekday?[index].day?.condition?.icon ?? '';
+
                 return NextSevenDaysForecastWidget(
                   isNight: isNight,
                   height: height,
