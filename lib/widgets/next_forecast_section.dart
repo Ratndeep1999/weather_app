@@ -43,8 +43,9 @@ class NextForecastSection extends StatelessWidget {
               separatorBuilder: (_, index) => SizedBox(height: height * 0.025),
               itemBuilder: (_, index) {
                 /// Get Maximum and Minimum Temperature
-                final maxTemp = weekday?[index].day?.maxtempC ?? "--";
-                final minTemp = weekday?[index].day?.mintempC ?? "--";
+                final day = weekday?[index];
+                final maxTemp = day?.day?.maxtempC?.toStringAsFixed(0) ?? "--";
+                final minTemp = day?.day?.mintempC?.toStringAsFixed(0) ?? "--";
                 final icon = weekday?[index].day?.condition?.icon ?? '';
 
                 return NextSevenDaysForecastWidget(
@@ -53,8 +54,8 @@ class NextForecastSection extends StatelessWidget {
                   width: width,
                   forecastDay: _formatedWeekdays(index),
                   icon: icon,
-                  minTemperature: "$maxTemp",
-                  maxTemperature: "$minTemp",
+                  minTemperature: maxTemp,
+                  maxTemperature: minTemp,
                 );
               },
             ),
