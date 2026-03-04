@@ -11,7 +11,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
     required this.width,
     required this.height,
     required this.today,
-    this.weatherModel,
+    required this.weatherModel,
   });
 
   final WeatherModel? weatherModel;
@@ -20,14 +20,12 @@ class TodayHourlyForecastSection extends StatelessWidget {
   final double height;
   final DateTime today;
 
-  /// Method to get Formated hours
-  _getHours(int hours) {
-    final timeData = today.add(Duration(hours: hours));
-    return timeData.hour.toString().padLeft(2, '0');
-  }
-
   @override
   Widget build(BuildContext context) {
+    /// Get Forecast Day Forecast Hours
+    final hours = weatherModel?.forecast!.forecastday?[0].hour;
+    final hoursLength = hours?.length;
+
     return BackgroundDecoratedBoxWidget(
       isNight: isNight,
       horizontalPadding: width * 0.04, //16
@@ -42,15 +40,21 @@ class TodayHourlyForecastSection extends StatelessWidget {
             height: height * 0.2125,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: weatherModel?.forecast?.forecastday?[0].hour?.length,
+              itemCount: hoursLength,
               itemBuilder: (BuildContext context, int index) {
+                /// Get Specific Hour Item
+                final hour = hours?[index];
+                final temp = hour?.tempC?.toStringAsFixed(0) ?? "--";
+                final icon = hour?.condition?.icon ?? '';
+
                 /// Hourly Weather Report Item
                 return HourlyWeatherReportWidget(
                   isNight: isNight,
                   width: width,
                   height: height,
-                  temperature: weatherModel?.forecast?.forecastday?[0].hour?[0].tempC?.toStringAsFixed(0) ?? "--",
-                  icon: "assets/icons/sunny_cloud.svg",
+                  temperature: temp,
+                  icon: icon,
+                  isCurrentHours: true,
                   hours: _getHours(-1),
                 );
               },
@@ -59,5 +63,12 @@ class TodayHourlyForecastSection extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  /// Method to get Formated hours
+  _getHours(int hours) {
+    final timeData = today.add(Duration(hours: hours));
+    print("TimeData : $timeData");
+    return timeData.hour.toString().padLeft(2, '0');
   }
 }
