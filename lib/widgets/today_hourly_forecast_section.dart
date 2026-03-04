@@ -23,8 +23,8 @@ class TodayHourlyForecastSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// Get Forecast Day Forecast Hours
-    final hours = weatherModel?.forecast!.forecastday?[0].hour;
-    final hoursLength = hours?.length;
+    final hours = weatherModel?.forecast?.forecastday?[0].hour;
+    final hoursLength = hours == null ? 0 : hours.length;
 
     return BackgroundDecoratedBoxWidget(
       isNight: isNight,
