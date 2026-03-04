@@ -40,18 +40,19 @@ class NextForecastSection extends StatelessWidget {
             height: width * 0.86,
             child: ListView.separated(
               itemCount: weekday == null ? 7 : weekday.length,
-              separatorBuilder: (_, index) {
-                return SizedBox(height: 20);
-              },
+              separatorBuilder: (_, index) => SizedBox(height: height * 0.025),
               itemBuilder: (_, index) {
+                /// Get Maximum and Minimum Temperature
+                final maxTemp = weekday?[index].day?.maxtempC ?? "--";
+                final minTemp = weekday?[index].day?.mintempC ?? "--";
                 return NextSevenDaysForecastWidget(
                   isNight: isNight,
                   height: height,
                   width: width,
                   forecastDay: _formatedWeekdays(index),
                   weatherIcon: "assets/icons/sun_cloud.svg",
-                  minTemperature: "10",
-                  maxTemperature: "13",
+                  minTemperature: "$maxTemp",
+                  maxTemperature: "$minTemp",
                 );
               },
             ),
