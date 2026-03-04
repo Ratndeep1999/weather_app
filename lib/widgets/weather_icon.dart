@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class WeatherIcon extends StatelessWidget {
-  const WeatherIcon({super.key, this.icon, required this.iconSize});
+  const WeatherIcon({super.key, required this.icon, required this.iconSize});
 
-  final String? icon;
+  final String icon;
   final double iconSize;
 
   @override
   Widget build(BuildContext context) {
-    return icon != null
+    return icon.isNotEmpty
         /// Weather status icon
         ? Image.network(
             "http:$icon",
