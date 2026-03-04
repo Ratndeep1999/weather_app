@@ -37,7 +37,7 @@ class NextSevenDaysForecastWidget extends StatelessWidget {
 
         /// Weather Report Icon
         WeatherIcon(icon: icon, iconSize: height * 0.033),
-        SizedBox(width: width * 0.155),
+        SizedBox(width: width * 0.2),
         /// Min And Max Temperature
         MinMaxTemperatureWidget(
           isNight: isNight,
