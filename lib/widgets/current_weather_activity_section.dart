@@ -33,23 +33,18 @@ class CurrentWeatherActivitySection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           /// rain
-          WeatherActivityWidget(
-            icon: "assets/icons/rain.svg",
-            label:
-                "${weatherModel?.current?.precipMm?.toStringAsFixed(0) ?? "--"}%",
-          ),
+          WeatherActivityWidget(icon: "assets/icons/rain.svg", label: "$rain%"),
 
           /// humidity
           WeatherActivityWidget(
             icon: "assets/icons/humidity.svg",
-            label: "${weatherModel?.current?.humidity ?? "--"}%",
+            label: "$humidity%",
           ),
 
           /// wind
           WeatherActivityWidget(
             icon: "assets/icons/wind.svg",
-            label:
-                "${weatherModel?.current?.windKph?.toStringAsFixed(0) ?? "--"}km/h",
+            label: "${wind}km/h",
           ),
         ],
       ),
