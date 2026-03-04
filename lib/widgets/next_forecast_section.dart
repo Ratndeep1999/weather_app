@@ -45,12 +45,13 @@ class NextForecastSection extends StatelessWidget {
                 /// Get Maximum and Minimum Temperature
                 final maxTemp = weekday?[index].day?.maxtempC ?? "--";
                 final minTemp = weekday?[index].day?.mintempC ?? "--";
+                final icon = weekday?[index].day?.condition?.icon ?? '';
                 return NextSevenDaysForecastWidget(
                   isNight: isNight,
                   height: height,
                   width: width,
                   forecastDay: _formatedWeekdays(index),
-                  weatherIcon: "assets/icons/sun_cloud.svg",
+                  icon: icon,
                   minTemperature: "$maxTemp",
                   maxTemperature: "$minTemp",
                 );
