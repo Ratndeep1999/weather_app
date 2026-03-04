@@ -46,7 +46,7 @@ class HourlyWeatherReportWidget extends StatelessWidget {
             WeatherIcon(iconSize: height * 0.055, icon: icon),
             SizedBox(height: height * 0.02), // 16
             /// Hours
-            Text("$hours.00", style: TextStyles.sfProRegular),
+            Text(hours, style: TextStyles.sfProRegular),
           ],
         ),
       ),
