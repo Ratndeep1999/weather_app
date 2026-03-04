@@ -63,6 +63,9 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 final localHur = today.hour.toString().padLeft(2, '0');
                 // debugPrint("Hur: $localHur");
 
+                /// Check local and api Hur isSame
+                final bool isSame = (apiHur == localHur);
+
                 /// Get Formatted Minutes
                 // final form_hur = (today.hour % 12 == 0 ? 12 : today.hour % 12);
                 // final local_hur = form_hur.toString().padLeft(2, '0');
