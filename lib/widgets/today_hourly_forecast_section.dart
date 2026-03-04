@@ -38,9 +38,10 @@ class TodayHourlyForecastSection extends StatelessWidget {
           /// Hourly Weather Report
           SizedBox(
             height: height * 0.2125,
-            child: ListView.builder(
+            child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: hoursLength,
+              separatorBuilder: (_, index) => SizedBox(width: width * 0.032),
               itemBuilder: (BuildContext context, int index) {
                 /// Get Specific Hour Item
                 final hour = hours?[index];
