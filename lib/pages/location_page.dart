@@ -46,6 +46,12 @@ class LocationPageState extends State<LocationPage> {
   }
 
   @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppGradientBackground(
