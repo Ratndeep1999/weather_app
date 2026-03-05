@@ -10,7 +10,6 @@ class TodayHourlyForecastSection extends StatelessWidget {
     required this.isNight,
     required this.width,
     required this.height,
-    required this.today,
     required this.weatherModel,
   });
 
@@ -18,10 +17,11 @@ class TodayHourlyForecastSection extends StatelessWidget {
   final bool isNight;
   final double width;
   final double height;
-  final DateTime today;
 
   @override
   Widget build(BuildContext context) {
+    final DateTime today = DateTime.now();
+
     /// Get Forecast Day Forecast Hours
     final hours = weatherModel?.forecast?.forecastday?[0].hour;
     final hoursLength = hours == null ? 24 : hours.length;
