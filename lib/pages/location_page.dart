@@ -55,7 +55,6 @@ class LocationPageState extends State<LocationPage> {
           ),
           child: Column(
             children: [
-
               /// Location Search Bar
               SearchLocationWidget(
                 searchController: searchController,
@@ -94,30 +93,31 @@ class LocationPageState extends State<LocationPage> {
 
   /// Get Current Location
   Future<void> getCurrentPosition() async {
-    final String? errorMsg = await checkLocationPermission();
-
-    if (errorMsg != null) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(errorMsg)));
-      return;
+    try {
+      await checkLocationPermission();
+      setState(() => isLoading = true);
+      const LocationSettings locationSettings = LocationSettings(
+        accuracy: LocationAccuracy.high,
+        distanceFilter: 50,
+      );
+      final Position position = await Geolocator.getCurrentPosition(
+        locationSettings: locationSettings,
+      );
+      setState(() {
+        isLoading = false;
+        _lat = position.latitude;
+        _long = position.longitude;
+      });
+    } on AppLocationServiceDisabledException catch (e) {
+      _showError(e.message);
+    } on AppLocationPermissionDeniedException catch (e) {
+      _showError(e.message);
+    } on AppLocationPermissionForeverDeniedException catch (e) {
+      _showError(e.message);
+    } catch (e) {
+      _showError("Something went wrong");
     }
-    setState(() => isLoading = true);
 
-    LocationSettings locationSettings = LocationSettings(
-      accuracy: LocationAccuracy.high,
-      distanceFilter: 50,
-    );
-
-    Position position = await Geolocator.getCurrentPosition(
-      locationSettings: locationSettings,
-    );
-
-    setState(() {
-      isLoading = false;
-      _lat = position.latitude;
-      _long = position.longitude;
-    });
   }
 
   /// Location Permission
@@ -159,5 +159,11 @@ class LocationPageState extends State<LocationPage> {
 
     /// Return "weatherModel" to HomePage
     Navigator.pop(context, weatherModel);
+  }
+
+  void _showError(String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 }
