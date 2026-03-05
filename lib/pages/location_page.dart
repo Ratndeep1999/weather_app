@@ -126,12 +126,11 @@ class LocationPageState extends State<LocationPage> {
 
   /// Submit Button
   Future<void> submit() async {
-    NetworkService networkService = NetworkService();
-
-    /// Pass 'lat' and 'long' and get weatherModel with data
-    final WeatherModel? weatherModel = await networkService.getForecastData(
-      lat: _lat ?? 0.0,
-      long: _long ?? 0.0,
+    final NetworkService _networkService = NetworkService();
+    final WeatherModel? weatherModel = await _networkService.getForecastData(
+      loc: searchController.text.isNotEmpty ? searchController.text : '',
+      lat: _lat,
+      long: _long,
     );
 
     /// Return "weatherModel" to HomePage
