@@ -11,10 +11,10 @@ class AppLocationServiceDisabledException implements Exception {
 }
 
 /// Throw when location permission is denied by the user.
-class LocationPermissionDeniedException implements Exception {
+class AppLocationPermissionDeniedException implements Exception {
   final String message;
 
-  LocationPermissionDeniedException([
+  AppLocationPermissionDeniedException([
     this.message = "Location permission denied.",
   ]);
 
@@ -23,10 +23,10 @@ class LocationPermissionDeniedException implements Exception {
 }
 
 /// Throw when location permission is permanently denied.
-class LocationPermissionForeverDeniedException implements Exception {
+class AppLocationPermissionForeverDeniedException implements Exception {
   final String message;
 
-  LocationPermissionForeverDeniedException([
+  AppLocationPermissionForeverDeniedException([
     this.message = "Location permission permanently denied.",
   ]);
 
