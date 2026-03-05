@@ -128,7 +128,7 @@ class LocationPageState extends State<LocationPage> {
   Future<void> submit() async {
     final NetworkService _networkService = NetworkService();
     final WeatherModel? weatherModel = await _networkService.getForecastData(
-      loc: searchController.text.isNotEmpty ? searchController.text : '',
+      loc: searchController.text,
       lat: _lat,
       long: _long,
     );
