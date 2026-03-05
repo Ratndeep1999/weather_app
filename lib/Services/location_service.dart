@@ -30,5 +30,18 @@ class LocationService {
   }
 
   /// Get current device location
-  void getCurrentLocation() {}
+  Future<Position> getCurrentLocation() async {
+    await checkPermission();
+
+    const locationSettings = LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 50,
+    );
+
+    /// Get lat and long
+    final position = await Geolocator.getCurrentPosition(
+      locationSettings: locationSettings,
+    );
+    return position;
+  }
 }
