@@ -1,8 +1,8 @@
 /// Throw when device location service is disabled.
-class LocationServiceDisabledException implements Exception {
+class AppLocationServiceDisabledException implements Exception {
   final String message;
 
-  LocationServiceDisabledException([
+  AppLocationServiceDisabledException([
     this.message = "Location services are disabled.",
   ]);
 
