@@ -88,7 +88,6 @@ class HomePageState extends State<HomePage> {
                   isNight: isNight,
                   width: width,
                   height: height,
-                  today: widget.nowDT,
                   weatherModel: weatherModel,
                 ),
                 SizedBox(height: height * 0.025), //20
