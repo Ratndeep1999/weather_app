@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_app/models/weatherModel.dart';
 
@@ -8,13 +9,22 @@ class NetworkService {
 
   /// Hit api and return data
   Future<WeatherModel?> getForecastData({
-    required double lat,
-    required double long,
+    required String loc,
+    double? lat,
+    double? long,
     int days = 7,
   }) async {
+    /// Get user query
+    late String q;
+    if (loc.isNotEmpty) {
+      q = loc;
+    } else {
+      q = "$lat,$long";
+    }
+
     /// String to "Uri"
     final Uri url = Uri.parse(
-      "${baseUrl}forecast.json?key=$apiKey&q=$lat,$long &days=$days&aqi=no&alerts=no",
+      "${baseUrl}forecast.json?key=$apiKey&q=$q&days=$days&aqi=no&alerts=no",
     );
 
     /// Get jsonResponse from server (String)
