@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/Services/network_service.dart';
+import 'package:weather_app/core/Exceptions/location_exception.dart';
 import 'package:weather_app/models/weatherModel.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import 'package:weather_app/widgets/current_lat_and_long_widget.dart';
@@ -54,6 +55,7 @@ class LocationPageState extends State<LocationPage> {
           ),
           child: Column(
             children: [
+
               /// Location Search Bar
               SearchLocationWidget(
                 searchController: searchController,
@@ -119,12 +121,14 @@ class LocationPageState extends State<LocationPage> {
   }
 
   /// Location Permission
-  Future<String?> checkLocationPermission() async {
+  Future<void> checkLocationPermission() async {
     bool isLocationOn = await Geolocator.isLocationServiceEnabled();
     LocationPermission permission = await Geolocator.checkPermission();
 
     /// Device Location Status
-    if (!isLocationOn) return 'Location services are disabled.';
+    if (!isLocationOn) {
+      throw AppLocationServiceDisabledException();
+    }
 
     /// If denied
     if (permission == LocationPermission.denied) {
@@ -133,26 +137,26 @@ class LocationPageState extends State<LocationPage> {
 
       /// Ask Permission and Store Status
       if (permission == LocationPermission.denied) {
-        return 'Location permissions are denied';
+        throw LocationPermissionDeniedException();
       }
     }
 
     /// Ask Permission Again and Store Status
     if (permission == LocationPermission.deniedForever) {
-      return 'Location permissions are permanently denied, we cannot request permissions.';
+      throw LocationPermissionForeverDeniedException();
     }
-
-    return null;
   }
 
   /// Submit Button
   Future<void> submit() async {
     NetworkService networkService = NetworkService();
+
     /// Pass 'lat' and 'long' and get weatherModel with data
     final WeatherModel? weatherModel = await networkService.getForecastData(
       lat: _lat ?? 0.0,
       long: _long ?? 0.0,
     );
+
     /// Return "weatherModel" to HomePage
     Navigator.pop(context, weatherModel);
   }
