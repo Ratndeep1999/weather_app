@@ -67,7 +67,6 @@ class LocationPageState extends State<LocationPage> {
               SearchLocationWidget(
                 searchController: searchController,
                 isNight: widget.isNight,
-                onChanged: (value) => debugPrint("Search Location Tap $value"),
               ),
               SizedBox(height: height * 0.0225), //18
               /// Select Current Location
