@@ -119,6 +119,8 @@ class LocationPageState extends State<LocationPage> {
       _showError(e.message);
     } catch (e) {
       _showError("Failed to get location");
+    } finally {
+      if (mounted) setState(() => isLoading = false);
     }
   }
 
