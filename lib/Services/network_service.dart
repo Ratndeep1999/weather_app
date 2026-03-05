@@ -12,9 +12,6 @@ class NetworkService {
     required String q,
     int days = 7,
   }) async {
-    /// Get user query
-    String q = loc.isNotEmpty ? loc : "$lat,$long";
-
     /// String to "Uri"
     final Uri url = Uri.parse(
       "${baseUrl}forecast.json?key=$apiKey&q=$q&days=$days&aqi=no&alerts=no",
