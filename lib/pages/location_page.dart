@@ -26,8 +26,9 @@ class LocationPage extends StatefulWidget {
 }
 
 class LocationPageState extends State<LocationPage> {
-  late double width, height;
+  final LocationService _locationService = LocationService();
   late TextEditingController searchController;
+  late double width, height;
   double? _lat, _long;
   bool isLoading = false;
 
@@ -94,7 +95,6 @@ class LocationPageState extends State<LocationPage> {
 
   /// Get Current Location
   Future<void> getCurrentPosition() async {
-    final LocationService _locationService = LocationService();
     try {
       setState(() => isLoading = true);
 
