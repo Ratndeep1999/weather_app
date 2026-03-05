@@ -9,7 +9,6 @@ class NetworkService {
 
   /// Hit api and return data
   Future<WeatherModel?> getForecastData({
-
     int days = 7,
   }) async {
     /// Get user query
