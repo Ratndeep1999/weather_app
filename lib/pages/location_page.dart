@@ -137,13 +137,13 @@ class LocationPageState extends State<LocationPage> {
 
       /// Ask Permission and Store Status
       if (permission == LocationPermission.denied) {
-        throw LocationPermissionDeniedException();
+        throw AppLocationPermissionDeniedException();
       }
     }
 
     /// Ask Permission Again and Store Status
     if (permission == LocationPermission.deniedForever) {
-      throw LocationPermissionForeverDeniedException();
+      throw AppLocationPermissionForeverDeniedException();
     }
   }
 
