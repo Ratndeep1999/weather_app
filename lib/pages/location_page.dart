@@ -122,7 +122,6 @@ class LocationPageState extends State<LocationPage> {
   Future<String?> checkLocationPermission() async {
     bool isLocationOn = await Geolocator.isLocationServiceEnabled();
     LocationPermission permission = await Geolocator.checkPermission();
-    debugPrint("Permission: $permission");
 
     /// Device Location Status
     if (!isLocationOn) return 'Location services are disabled.';
