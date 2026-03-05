@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:weather_app/Services/location_service.dart';
 import 'package:weather_app/Services/network_service.dart';
 import 'package:weather_app/core/Exceptions/location_exception.dart';
 import 'package:weather_app/models/weatherModel.dart';
@@ -93,16 +94,12 @@ class LocationPageState extends State<LocationPage> {
 
   /// Get Current Location
   Future<void> getCurrentPosition() async {
+    final LocationService _locationService = LocationService();
     try {
-      await checkLocationPermission();
       setState(() => isLoading = true);
-      const LocationSettings locationSettings = LocationSettings(
-        accuracy: LocationAccuracy.high,
-        distanceFilter: 50,
-      );
-      final Position position = await Geolocator.getCurrentPosition(
-        locationSettings: locationSettings,
-      );
+
+      final Position position = await _locationService.getCurrentLocation();
+
       setState(() {
         isLoading = false;
         _lat = position.latitude;
@@ -115,9 +112,8 @@ class LocationPageState extends State<LocationPage> {
     } on AppLocationPermissionForeverDeniedException catch (e) {
       _showError(e.message);
     } catch (e) {
-      _showError("Something went wrong");
+      _showError("Failed to get location");
     }
-
   }
 
   /// Submit Button
