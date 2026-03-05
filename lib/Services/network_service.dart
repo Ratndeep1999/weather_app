@@ -9,9 +9,7 @@ class NetworkService {
 
   /// Hit api and return data
   Future<WeatherModel?> getForecastData({
-    required String loc,
-    double? lat,
-    double? long,
+
     int days = 7,
   }) async {
     /// Get user query
