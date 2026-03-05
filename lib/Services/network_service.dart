@@ -16,11 +16,7 @@ class NetworkService {
   }) async {
     /// Get user query
     late String q;
-    if (loc.isNotEmpty) {
-      q = loc;
-    } else {
-      q = "$lat,$long";
-    }
+    q = loc.isNotEmpty ? q = loc : q = "$lat,$long";
 
     /// String to "Uri"
     final Uri url = Uri.parse(
