@@ -3,7 +3,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/Services/location_service.dart';
 import 'package:weather_app/Services/network_service.dart';
 import 'package:weather_app/core/Exceptions/location_exception.dart';
-import 'package:weather_app/models/weatherModel.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import 'package:weather_app/widgets/current_lat_and_long_widget.dart';
 import 'package:weather_app/widgets/current_location_widget.dart';
@@ -129,9 +128,7 @@ class LocationPageState extends State<LocationPage> {
     String q = searchController.text.isNotEmpty
         ? searchController.text
         : "$_lat,$_long";
-    final WeatherModel? weatherModel = await _networkService.getForecastData(
-      q : q
-    );
+    final weatherModel = await _networkService.getForecastData(q: q);
 
     /// Return "weatherModel" to HomePage
     Navigator.pop(context, weatherModel);
