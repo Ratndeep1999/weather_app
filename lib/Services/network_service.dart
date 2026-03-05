@@ -15,8 +15,7 @@ class NetworkService {
     int days = 7,
   }) async {
     /// Get user query
-    late String q;
-    q = loc.isNotEmpty ? q = loc : q = "$lat,$long";
+    String q = loc.isNotEmpty ? loc : "$lat,$long";
 
     /// String to "Uri"
     final Uri url = Uri.parse(
