@@ -24,7 +24,6 @@ class TodayHourlyForecastSection extends StatelessWidget {
 
     /// Get Forecast Day Forecast Hours
     final hours = weatherModel?.forecast?.forecastday?[0].hour;
-    final hoursLength = hours?.length ?? 0;
 
     return BackgroundDecoratedBoxWidget(
       isNight: isNight,
@@ -40,7 +39,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
             height: height * 0.2125,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemCount: hoursLength,
+              itemCount: hours?.length ?? 0,
               separatorBuilder: (_, index) => SizedBox(width: width * 0.032),
               itemBuilder: (BuildContext context, int index) {
                 /// Get Specific Hour Item
