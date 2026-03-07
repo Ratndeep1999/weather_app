@@ -47,19 +47,19 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 final temp = hour?.tempC?.toStringAsFixed(0) ?? "--";
                 final icon = hour?.condition?.icon ?? '';
 
-                /// Get hours from api (HH)
-                final apiHur = hour?.time?.hour?.toString().padLeft(2, "0") ?? "00";
+                /// Get hours from api and local device  (HH)
+                final apiHur = hour?.time?.hour ?? 00;
+                final localHur = today.hour;
 
-                /// Get hours from local device (HH)
-                final localHur = today.hour.toString().padLeft(2, '0');
-
-                /// Check local and api Hur isSame
+                /// Check both hours is same and get minutes base on condition
                 final bool isSame = (apiHur == localHur);
+                final locMin = "${isSame ? today.minute : 0}".padLeft(2, '0');
 
-                /// Get minutes from local device (MM)
-                final localMin = isSame
-                    ? today.minute.toString().padLeft(2, '0')
-                    : "00";
+                /// Get 12 Hur Format (HH) from 24 Hur
+                final intHur = apiHur == 0
+                    ? 0
+                    : (apiHur % 12 == 0 ? 12 : apiHur % 12);
+                final hur = intHur.toString().padLeft(2, '0');
 
                 /// Hourly Weather Report Item
                 return HourlyWeatherReportWidget(
@@ -69,7 +69,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
                   temperature: temp,
                   icon: icon,
                   isCurrentHours: isSame,
-                  hours: "$apiHur:$localMin",
+                  hours: "$hur:$locMin",
                 );
               },
             ),
