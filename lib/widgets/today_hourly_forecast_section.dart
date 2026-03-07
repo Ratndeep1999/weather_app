@@ -48,9 +48,7 @@ class TodayHourlyForecastSection extends StatelessWidget {
                 final icon = hour?.condition?.icon ?? '';
 
                 /// Get hours from api (HH)
-                final apiHur = hour?.time?.hour == null
-                    ? "00"
-                    : hour!.time!.hour.toString().padLeft(2, '0');
+                final apiHur = hour?.time?.hour?.toString().padLeft(2, "0") ?? "00";
 
                 /// Get hours from local device (HH)
                 final localHur = today.hour.toString().padLeft(2, '0');
