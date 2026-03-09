@@ -41,7 +41,11 @@ class TodayHourlyForecastSection extends StatelessWidget {
               separatorBuilder: (_, index) => SizedBox(width: width * 0.032),
               itemBuilder: (BuildContext context, int index) {
                 /// Get Specific Hour Item Data
-                final data = HourlyDataUtils.getHourlyData(weatherModel, index, now);
+                final data = HourlyDataUtils.getHourlyData(
+                  weatherModel,
+                  index,
+                  now,
+                );
 
                 /// Hourly Weather Report Item
                 return HourlyWeatherReportWidget(
