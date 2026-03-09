@@ -33,6 +33,7 @@ class LocationAndNotifSection extends StatelessWidget {
               semanticsLabel: "location",
             ),
             SizedBox(width: width * 0.02), //8
+            /// Location Name
             SizedBox(
               width: width * 0.65,
               child: Text(
