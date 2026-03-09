@@ -35,13 +35,11 @@ class LocationAndNotifSection extends StatelessWidget {
             SizedBox(width: width * 0.02), //8
             SizedBox(
               width: width * 0.65,
-              child: Expanded(
-                /// Location Name
-                child: Text(
-                  "$location $region",
-                  style: TextStyles.sfProSemibold,
-                  overflow: TextOverflow.ellipsis,
-                ),
+              child: Text(
+                "$location $region",
+                style: TextStyles.sfProSemibold,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
             ),
             // SizedBox(width: width * 0.04), //16
