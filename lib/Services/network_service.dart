@@ -19,7 +19,7 @@ class NetworkService {
     return true;
   }
 
-  /// Hit api and return data
+  /// Hit api and return model with data
   Future<WeatherModel?> getForecastData({
     required String q,
     int days = 7,
