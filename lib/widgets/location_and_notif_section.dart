@@ -32,12 +32,21 @@ class LocationAndNotifSection extends StatelessWidget {
               semanticsLabel: "location",
             ),
             SizedBox(width: width * 0.02), //8
-            Text("$location $region", style: TextStyles.sfProSemibold),
-            SizedBox(width: width * 0.04), //16
-            SvgPicture.asset(
-              "assets/icons/down_arrow.svg",
-              semanticsLabel: "select location",
+            SizedBox(
+              width: width * 0.65,
+              child: Expanded(
+                child: Text(
+                  "$location $region",
+                  style: TextStyles.sfProSemibold,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
             ),
+            // SizedBox(width: width * 0.04), //16
+            // SvgPicture.asset(
+            //   "assets/icons/down_arrow.svg",
+            //   semanticsLabel: "select location",
+            // ),
           ],
         ),
       ),
