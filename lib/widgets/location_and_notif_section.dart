@@ -27,6 +27,7 @@ class LocationAndNotifSection extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
+            /// Location icon
             SvgPicture.asset(
               "assets/icons/location.svg",
               semanticsLabel: "location",
@@ -35,6 +36,7 @@ class LocationAndNotifSection extends StatelessWidget {
             SizedBox(
               width: width * 0.65,
               child: Expanded(
+                /// Location Name
                 child: Text(
                   "$location $region",
                   style: TextStyles.sfProSemibold,
@@ -53,12 +55,12 @@ class LocationAndNotifSection extends StatelessWidget {
       secondWidget: Stack(
         clipBehavior: Clip.none,
         children: [
-          // no notify
+          /// Notification_off
           SvgPicture.asset(
             "assets/icons/no_notif.svg",
             semanticsLabel: "no notification",
           ),
-          // no notify
+          /// Notification_on
           Visibility(
             visible: true,
             child: Positioned(
