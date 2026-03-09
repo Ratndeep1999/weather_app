@@ -1,6 +1,6 @@
 class HourlyDataUtils {
   /// get Hourly items length
-  static int? getHourlyItemLength(weatherModel) {
+  static int getHourlyItemLength(weatherModel) {
     return weatherModel?.forecast?.forecastday?[0].hour?.length ?? 0;
   }
 
