@@ -127,19 +127,23 @@ class LocationPageState extends State<LocationPage> {
     /// NetworkService object
     final NetworkService _networkService = NetworkService();
 
-    /// Condition to pass userInput
-    String q = searchController.text.isNotEmpty
-        ? searchController.text
-        : "$_lat,$_long";
+    try {
+      /// Condition to pass userInput
+      String q = searchController.text.isNotEmpty
+          ? searchController.text
+          : "$_lat,$_long";
 
-    /// Get object of weatherModel with data
-    final weatherModel = await _networkService.getForecastData(q: q);
+      /// Get object of weatherModel with data
+      final weatherModel = await _networkService.getForecastData(q: q);
 
-    /// Check any error from WeatherModel if not then return to homePage()
-    if (weatherModel?.error != null) {
-      _showError("Server error: ${weatherModel?.error?.message}");
-    } else {
-      Navigator.pop(context, weatherModel);
+      /// Check any error from WeatherModel if not then return to homePage()
+      if (weatherModel?.error != null) {
+        _showError("Server error: ${weatherModel?.error?.message}");
+      } else {
+        Navigator.pop(context, weatherModel);
+      }
+    } catch (e) {
+      _showError("Something went wrong our backend team is working on it.");
     }
   }
 
