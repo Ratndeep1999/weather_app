@@ -12,9 +12,10 @@ class WeatherModel {
   final Location? location;
   final Current? current;
   final Forecast? forecast;
+  final Error? error;
 
   /// Constructor
-  WeatherModel({this.location, this.current, this.forecast});
+  WeatherModel({this.location, this.current, this.forecast, this.error});
 
   /// fromJson() [return class constructor object]
   factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
@@ -25,6 +26,7 @@ class WeatherModel {
     forecast: json["forecast"] == null
         ? null
         : Forecast.fromJson(json["forecast"]),
+    error: json["error"] == null ? null : Error.fromJson(json["error"]),
   );
 
   /// toJson() [return Json map]
@@ -32,6 +34,7 @@ class WeatherModel {
     "location": location?.toJson(),
     "current": current?.toJson(),
     "forecast": forecast?.toJson(),
+    "error": error?.toJson(),
   };
 }
 
@@ -495,8 +498,22 @@ class Hour {
   );
 
   Map<String, dynamic> toJson() => {
-    "time": "${time!.year.toString().padLeft(4, '0')}-${time!.month.toString().padLeft(2, '0')}-${time!.day.toString().padLeft(2, '0')} ${time!.hour.toString().padLeft(2, '0')}:${time!.minute.toString().padLeft(2, '0')}",
+    "time":
+        "${time!.year.toString().padLeft(4, '0')}-${time!.month.toString().padLeft(2, '0')}-${time!.day.toString().padLeft(2, '0')} ${time!.hour.toString().padLeft(2, '0')}:${time!.minute.toString().padLeft(2, '0')}",
     "temp_c": tempC,
     "condition": condition?.toJson(),
   };
+}
+
+/// Error class
+class Error {
+  final int? code;
+  final String? message;
+
+  Error({this.code, this.message});
+
+  factory Error.fromJson(Map<String, dynamic> json) =>
+      Error(code: json["code"], message: json["message"]);
+
+  Map<String, dynamic> toJson() => {"code": code, "message": message};
 }
