@@ -1,1 +1,11 @@
-class ConnectivityService {}
+import 'package:connectivity_plus/connectivity_plus.dart';
+
+class ConnectivityService {
+  final Connectivity _connectivity = Connectivity();
+
+  Future<bool> checkInternetConnectivity() async {
+    final List<ConnectivityResult> result = await _connectivity
+        .checkConnectivity();
+    return !result.contains(ConnectivityResult.none);
+  }
+}
