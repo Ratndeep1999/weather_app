@@ -43,3 +43,17 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Gradle
+.gradle/
+android/.gradle/
+
+# Kotlin
+.kotlin/
+android/.kotlin/
+
+# Android build
+android/build/
+
+# Local configuration
+local.properties
