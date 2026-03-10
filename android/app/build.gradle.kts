@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.ratndeep.weather_app.weather_app"
-    compileSdk = 35
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
