@@ -22,8 +22,14 @@ class SearchLocationWidget extends StatelessWidget {
       style: TextStyles.alegreyaSansBold,
       textCapitalization: TextCapitalization.words,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.search, color: Colors.white),
-        hint: Text("Search Location", style: TextStyles.alegreyaSansBold),
+        prefixIcon: Padding(
+          padding: const EdgeInsets.only(left: 16.0),
+          child: Icon(Icons.search, color: Colors.white),
+        ),
+        hint: Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: Text("Search Location", style: TextStyles.alegreyaSansBold),
+        ),
         filled: true,
         fillColor: isNight ? Color(0xFF0c3a8a) : Color(0xFF278dc4),
         contentPadding: EdgeInsets.zero,
