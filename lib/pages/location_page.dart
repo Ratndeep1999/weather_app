@@ -5,7 +5,6 @@ import 'package:weather_app/Services/network_service.dart';
 import 'package:weather_app/core/Exceptions/location_exception.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import 'package:weather_app/widgets/current_lat_and_long_widget.dart';
-import 'package:weather_app/widgets/current_location_widget.dart';
 import 'package:weather_app/widgets/get_location_widget.dart';
 import 'package:weather_app/widgets/search_location_widget.dart';
 import 'package:weather_app/widgets/submit_button_widget.dart';
@@ -68,19 +67,18 @@ class LocationPageState extends State<LocationPage> {
                 searchController: searchController,
                 isNight: widget.isNight,
               ),
-              SizedBox(height: height * 0.0225),
-              //18
+              SizedBox(height: height * 0.0225), //18
               /// Select Current Location
-              CurrentLocationWidget(
+              GetLocationWidget(
                 isNight: widget.isNight,
-                isLoading: isLoading,
                 width: width,
                 height: height,
+                isLoading: isLoading,
                 onTap: getCurrentPosition,
                 icon: Icons.location_on,
+                label: "Current Location",
               ),
-              SizedBox(height: height * 0.0125),
-              // 10
+              SizedBox(height: height * 0.0125), // 10
               /// Current Lat and Long.
               CurrentLatAndLongWidget(
                 isNight: widget.isNight,
@@ -90,9 +88,17 @@ class LocationPageState extends State<LocationPage> {
                 lat: _lat ?? 0.00,
                 long: _long ?? 0.00,
               ),
+              SizedBox(height: height * 0.0125),
 
               /// Select Location From Map
-              // MapLocationWidget(onTap: () {  }, isNight: null, height: null, width: null,),
+              GetLocationWidget(
+                onTap: () {},
+                isNight: widget.isNight,
+                height: height,
+                width: width,
+                icon: Icons.map,
+                label: "Map Location",
+              ),
               Spacer(),
 
               /// Submit Button
