@@ -6,6 +6,7 @@ import 'package:weather_app/core/Exceptions/location_exception.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import 'package:weather_app/widgets/current_lat_and_long_widget.dart';
 import 'package:weather_app/widgets/current_location_widget.dart';
+import 'package:weather_app/widgets/get_location_widget.dart';
 import 'package:weather_app/widgets/search_location_widget.dart';
 import 'package:weather_app/widgets/submit_button_widget.dart';
 
@@ -67,7 +68,8 @@ class LocationPageState extends State<LocationPage> {
                 searchController: searchController,
                 isNight: widget.isNight,
               ),
-              SizedBox(height: height * 0.0225), //18
+              SizedBox(height: height * 0.0225),
+              //18
               /// Select Current Location
               CurrentLocationWidget(
                 isNight: widget.isNight,
@@ -75,8 +77,10 @@ class LocationPageState extends State<LocationPage> {
                 width: width,
                 height: height,
                 onTap: getCurrentPosition,
+                icon: Icons.location_on,
               ),
-              SizedBox(height: height * 0.0125), // 10
+              SizedBox(height: height * 0.0125),
+              // 10
               /// Current Lat and Long.
               CurrentLatAndLongWidget(
                 isNight: widget.isNight,
@@ -86,7 +90,9 @@ class LocationPageState extends State<LocationPage> {
                 lat: _lat ?? 0.00,
                 long: _long ?? 0.00,
               ),
+
               /// Select Location From Map
+              // MapLocationWidget(onTap: () {  }, isNight: null, height: null, width: null,),
               Spacer(),
 
               /// Submit Button
