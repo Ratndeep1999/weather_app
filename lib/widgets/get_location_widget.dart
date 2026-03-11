@@ -2,22 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/commons/text_styles.dart';
 import 'background_decorated_box_widget.dart';
 
-class CurrentLocationWidget extends StatelessWidget {
-  const CurrentLocationWidget({
+class GetLocationWidget extends StatelessWidget {
+  const GetLocationWidget({
     super.key,
     required this.isNight,
     required this.width,
     required this.height,
     required this.onTap,
+    required this.icon,
+    required this.label,
     this.isLoading = false,
     this.isLoadingFeature = false,
-    required this.icon,
   });
 
   final VoidCallback onTap;
   final bool isNight, isLoading, isLoadingFeature;
   final double height, width;
   final IconData icon;
+  final String label;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class CurrentLocationWidget extends StatelessWidget {
                 : Icon(icon, color: Colors.white),
             SizedBox(width: width * 0.045), // 18
             /// Text
-            Text("Current Location", style: TextStyles.alegreyaSansBold),
+            Text(label, style: TextStyles.alegreyaSansBold),
           ],
         ),
       ),
