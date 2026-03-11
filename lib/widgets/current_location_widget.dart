@@ -11,11 +11,13 @@ class CurrentLocationWidget extends StatelessWidget {
     required this.onTap,
     this.isLoading = false,
     this.isLoadingFeature = false,
+    required this.icon,
   });
 
   final VoidCallback onTap;
   final bool isNight, isLoading, isLoadingFeature;
   final double height, width;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +40,8 @@ class CurrentLocationWidget extends StatelessWidget {
                             strokeWidth: 2,
                           ),
                         )
-                      : const Icon(Icons.location_on, color: Colors.white)
-                : const Icon(Icons.location_on, color: Colors.white),
+                      : Icon(icon, color: Colors.white)
+                : Icon(icon, color: Colors.white),
             SizedBox(width: width * 0.045), // 18
             /// Text
             Text("Current Location", style: TextStyles.alegreyaSansBold),
