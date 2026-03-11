@@ -67,7 +67,8 @@ class LocationPageState extends State<LocationPage> {
                 searchController: searchController,
                 isNight: widget.isNight,
               ),
-              SizedBox(height: height * 0.0225), //18
+              SizedBox(height: height * 0.0125),
+
               /// Select Current Location
               GetLocationWidget(
                 isNight: widget.isNight,
@@ -79,16 +80,6 @@ class LocationPageState extends State<LocationPage> {
                 label: "Current Location",
               ),
               SizedBox(height: height * 0.0125), // 10
-              /// Current Lat and Long.
-              CurrentLatAndLongWidget(
-                isNight: widget.isNight,
-                isLoading: isLoading,
-                width: width,
-                height: height,
-                lat: _lat ?? 0.00,
-                long: _long ?? 0.00,
-              ),
-              SizedBox(height: height * 0.0125),
 
               /// Select Location From Map
               GetLocationWidget(
@@ -98,6 +89,17 @@ class LocationPageState extends State<LocationPage> {
                 width: width,
                 icon: Icons.map,
                 label: "Map Location",
+              ),
+              SizedBox(height: height * 0.0125),
+
+              /// Current Lat and Long.
+              CurrentLatAndLongWidget(
+                isNight: widget.isNight,
+                isLoading: isLoading,
+                width: width,
+                height: height,
+                lat: _lat ?? 0.00,
+                long: _long ?? 0.00,
               ),
               Spacer(),
 
