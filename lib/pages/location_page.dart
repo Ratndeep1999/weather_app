@@ -3,6 +3,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/Services/location_service.dart';
 import 'package:weather_app/Services/network_service.dart';
 import 'package:weather_app/core/Exceptions/location_exception.dart';
+import 'package:weather_app/pages/google_map_page.dart';
 import 'package:weather_app/widgets/app_gradient_background.dart';
 import 'package:weather_app/widgets/current_lat_and_long_widget.dart';
 import 'package:weather_app/widgets/get_location_widget.dart';
@@ -81,10 +82,9 @@ class LocationPageState extends State<LocationPage> {
                 label: "Current Location",
               ),
               SizedBox(height: height * 0.0125), // 10
-
               /// Select Location From Map
               GetLocationWidget(
-                onTap: () {},
+                onTap: openMap,
                 isNight: widget.isNight,
                 height: height,
                 width: width,
@@ -168,5 +168,10 @@ class LocationPageState extends State<LocationPage> {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  /// Open Map Page
+  void openMap() {
+    Navigator.push(context, MaterialPageRoute(builder: (_) => GoogleMapPage()));
   }
 }
