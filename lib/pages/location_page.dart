@@ -172,15 +172,6 @@ class LocationPageState extends State<LocationPage> {
 
   /// Open Map Page
   void openMap() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => GoogleMapPage(
-          isNight: widget.isNight,
-          height: widget.height,
-          width: widget.width,
-        ),
-      ),
-    );
+    Navigator.push(context, MaterialPageRoute(builder: (_) => GoogleMapPage()));
   }
 }
