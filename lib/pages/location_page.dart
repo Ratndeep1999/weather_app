@@ -74,6 +74,7 @@ class LocationPageState extends State<LocationPage> {
                 isNight: widget.isNight,
                 width: width,
                 height: height,
+                isLoadingFeature: true,
                 isLoading: isLoading,
                 onTap: getCurrentPosition,
                 icon: Icons.location_on,
